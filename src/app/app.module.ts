@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProdukterComponent } from './pages/produkter/produkter.component';
 import { ProductCardComponent } from './pages/produkter/card/card.component';
 import { ProductComponent } from './pages/product/product.component';
+import { TermsoftradeComponent } from './pages/termsoftrade/termsoftrade.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ProductComponent } from './pages/product/product.component';
     LoginComponent,
     ProdukterComponent,
     ProductCardComponent,
-    ProductComponent
+    ProductComponent,
+    TermsoftradeComponent
   ],
   imports: [
     BrowserModule,

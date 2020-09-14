@@ -10,7 +10,7 @@
         <figcaption>
             <ul>
                 <li><a routerLink="">Forside</a></li>
-                <li><a routerLink="">Salgs- og handelbetingelser</a></li>
+                <li><a routerLink="/Salgs-og-handelbetingelser">Salgs- og handelbetingelser</a></li>
                 <li *ngIf="!auth.isOnline"><a class="login-button" routerLink="/login">Login</a></li>
                 <li *ngIf="auth.isOnline"><a class="login-button" (click)="auth.logout()">Logout</a></li>
             </ul>
