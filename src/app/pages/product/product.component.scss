@@ -1,0 +1,19 @@
+.product-details-container {
+    display: grid;
+    grid-template-columns: 20% 1fr 20%;
+    gap: 1em;
+    .product-details-images {
+        figure {
+            width: 100%;
+            img {
+                width: 100%;
+            }
+        }
+      
+    }
+    .product-details-midle {
+        p {
+            margin-top: 1em;
+        }
+    }
+}

@@ -7,13 +7,14 @@
         cursor: pointer;
         transition: all 200ms ease-in-out;
         &[open] > summary{
-            color: var(--highlight);
+            color: white;
         }
         &[open] > div {
             animation: slideDown 400ms ease-in-out;
 
           }
         summary {
+            color: var(--highlight);
             user-select: none;
             padding-left: 1em;
             &::-webkit-details-marker {

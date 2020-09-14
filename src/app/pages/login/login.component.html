@@ -1,0 +1,18 @@
+<header class="page-header">
+    <app-nav></app-nav>
+    <breadcrumb [breadcrumbs]="[{place: 'login', url: 'login'}]"></breadcrumb>
+</header>
+<main class="page-main">
+    <app-side-menu></app-side-menu>
+    <section class="login">
+        <h1>Login</h1>
+        <p>Indtast brugernavn og adgangskode for at logge på</p>
+        <form class="login-form" (ngSubmit)="onSubmit()" [formGroup]="login">
+            <label for="username">Brugernavn:</label>
+            <input formControlName="username" type="text" id="username" placeholder="John@doe.com">
+            <label for="password">adgangskode:</label>
+            <input formControlName="password" type="password" id="password" placeholder="*******">
+            <button>Login</button>
+        </form>
+    </section>
+</main>

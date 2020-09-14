@@ -1,0 +1,29 @@
+.login {
+    .login-form {
+        label {
+            display: block;
+            margin: 1em 0 .5em 0;
+        }
+        input {
+            display: block;
+            padding: 0.5em;
+            width: 250px;
+            background-color: var(--input-fill);
+            border: 1px solid var(--border-color);
+            color: var(--highlight);
+            &::placeholder {
+                color: var(--highlight);
+                opacity: .5;
+            }
+
+        }
+        button {
+            margin-top: 1em;
+            padding: .5em 2em;
+            background-color: var(--highlight);
+            border: none;
+            color: var(--dark-font);
+            cursor: pointer;
+        }
+    }
+}

@@ -20,7 +20,8 @@ a,
 span, 
 button, 
 details, 
-summary {
+summary,
+label {
     color: white;
 }
 p {
@@ -31,6 +32,11 @@ p {
 .page-header, .page-main {
     width: 80%;
     margin: 0 auto 1em auto;
+}
+.page-main {
+    display: grid;
+    grid-template-columns: 15% 1fr;
+    gap: 1em;
 }
 // page colors as variables
 :root {

@@ -1,0 +1,15 @@
+<article class="product-card-container">
+    <figure>
+        <img src="{{image}}" alt="product image">
+    </figure>
+    <section class="middle-products-card">
+        <h2>{{title}}</h2>
+        <p>{{teaser}} <a class="readMore-products" href="/produkt/{{id}}">Læs mere</a></p>
+    </section>
+    <section class="right-products-card">
+        <p class="price-products">Pris: DKK {{price}}</p>
+        <button>Læg i kurv</button>
+        <p class="stock-products" *ngIf="(stock >= 1)">{{stock}}+ på lager</p>
+        <p class="stock-products" *ngIf="(stock <= 0)">Varen er ikke på lager.</p>
+    </section>
+</article>

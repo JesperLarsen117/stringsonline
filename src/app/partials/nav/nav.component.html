@@ -11,13 +11,14 @@
             <ul>
                 <li><a routerLink="">Forside</a></li>
                 <li><a routerLink="">Salgs- og handelbetingelser</a></li>
-                <li><a class="login-button" routerLink="">Login</a></li>
+                <li *ngIf="!auth.isOnline"><a class="login-button" routerLink="/login">Login</a></li>
+                <li *ngIf="auth.isOnline"><a class="login-button" (click)="auth.logout()">Logout</a></li>
             </ul>
         </figcaption>
     </figure>
     <section class="search-nav">
-        <form class="search-form">
-            <input type="text" placeholder="Indtast søgeord ">
+        <form class="search-form" [formGroup]="search">
+            <input formControlName="search" type="text" placeholder="Indtast søgeord ">
             <button><span class="material-icons"> arrow_forward </span></button>
         </form>
     </section>

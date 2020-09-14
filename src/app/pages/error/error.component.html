@@ -1,1 +1,11 @@
-<p>error works!</p>
+<header class="page-header">
+    <app-nav></app-nav>
+    <breadcrumb [breadcrumbs]="[{place: 'Error', url: '/error'}]"></breadcrumb>
+</header>
+<main class="page-main">
+    <app-side-menu></app-side-menu>
+    <section>
+        <h1>Siden findes ikke.</h1>
+        <a class="backToFrontpage" routerLink="/">Gå tilbage til forsiden</a>
+    </section>
+</main>

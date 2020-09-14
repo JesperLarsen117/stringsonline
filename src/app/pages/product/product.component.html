@@ -1,0 +1,21 @@
+<header class="page-header">
+    <app-nav></app-nav>
+    <breadcrumb [breadcrumbs]="[{place: 'produkt', url: '/produkt'}]"></breadcrumb>
+</header>
+<main class="page-main">
+    <app-side-menu></app-side-menu>
+    <section class="product-details-container">
+        <article class="product-details-images" *ngIf="product">
+            <figure>
+                <img src="{{product.image.fullpath}}" alt="{{product.name}} image">
+            </figure>
+            <figure *ngFor="let item of product.gallery">
+                <img src="{{item.fullpath}}" alt="{{product.name}} image">
+            </figure>
+        </article>
+        <article class="product-details-midle" *ngIf="product">
+            <h2>{{product.name}}</h2>
+            <p>{{product.description_long}}</p>
+        </article>
+    </section>
+</main>

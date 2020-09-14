@@ -1,43 +1,39 @@
-.frontpage-container {
-    display: grid;
-    grid-template-columns: 15% 1fr;
-    gap: 1em;
-    .fontpage-mainContent {
-            figure {
-                display: grid;
-                grid-template-columns: 1fr 30%;
-                img {
-                    width: 100%;
+.fontpage-mainContent {
+        figure {
+            display: grid;
+            grid-template-columns: 1fr 30%;
+            img {
+                width: 100%;
+            }
+            figcaption {
+                background-color: #2C3737;
+                padding: 1em;
+                h2 {
+                    font-weight: 300;
+                    font-size: 3em;
+                    span {
+                        font-weight: bold;
+                    }
                 }
-                figcaption {
-                    background-color: #2C3737;
-                    padding: 1em;
-                    h2 {
-                        font-weight: 300;
-                        font-size: 3em;
-                        span {
-                            font-weight: bold;
-                        }
-                    }
-                    p {
-                        font-size: 1.2em;
-                        font-weight: 100;
-                    }
-                    div {
-                        margin: 1em 0;
-                        border-top: 1px solid rgba(255, 255, 255, 0.29);
-                        border-bottom: 1px solid rgba(255, 255, 255, 0.29);
-                        font-size: 2.4em;
-                        line-height: 1.4em;
-                    }
-                    a {
-                        text-decoration: none;
-                        color: var(--border-color);
-                        background-color: var(--highlight);
-                        padding: .5em 2em;
-                        border-radius: 50px;
-                    }
+                p {
+                    font-size: 1.2em;
+                    font-weight: 100;
+                }
+                div {
+                    margin: 1em 0;
+                    border-top: 1px solid rgba(255, 255, 255, 0.29);
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.29);
+                    font-size: 2.4em;
+                    line-height: 1.4em;
+                }
+                a {
+                    text-decoration: none;
+                    color: var(--border-color);
+                    background-color: var(--highlight);
+                    padding: .5em 2em;
+                    border-radius: 50px;
                 }
             }
-    }
+        }
 }
+

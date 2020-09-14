@@ -1,15 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'card-frontpage',
+  selector: 'product-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnInit {
-  @Input('title') title;
+export class ProductCardComponent implements OnInit {
   @Input('image') image;
+  @Input('title') title;
   @Input('teaser') teaser;
   @Input('price') price;
+  @Input('stock') stock;
   @Input('id') id;
   constructor() { }
 
