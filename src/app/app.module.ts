@@ -10,6 +10,7 @@ import { FooterComponent } from './partials/footer/footer.component';
 import { BreadcrumbComponent } from './partials/breadcrumb/breadcrumb.component';
 import { SideMenuComponent } from './partials/side-menu/side-menu.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CardComponent } from './pages/frontpage/card/card.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     NavComponent,
     FooterComponent,
     BreadcrumbComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,

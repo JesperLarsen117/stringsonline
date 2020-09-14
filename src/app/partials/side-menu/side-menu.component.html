@@ -1,6 +1,8 @@
-<aside class="left-menu">
+<aside class="left-menu" *ngIf="http.products$ | async as products">
     <details *ngFor="let product of products">
         <summary>{{product.title}}</summary>
-        <a *ngFor="let item of product.subgroups" routerLink="produkter/{{item.id}}">{{item.title}}</a>
+        <div class="dropdown-links">
+            <a *ngFor="let item of product.subgroups" routerLink="produkter/{{item.id}}">{{item.title}}</a>
+        </div>
     </details>
 </aside>

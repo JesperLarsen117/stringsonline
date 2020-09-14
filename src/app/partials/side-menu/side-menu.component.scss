@@ -5,6 +5,14 @@
         margin: 1em 0;
         user-select: none;
         cursor: pointer;
+        transition: all 200ms ease-in-out;
+        &[open] > summary{
+            color: var(--highlight);
+        }
+        &[open] > div {
+            animation: slideDown 400ms ease-in-out;
+
+          }
         summary {
             user-select: none;
             padding-left: 1em;
@@ -19,3 +27,16 @@
         }
     }
 }
+
+@keyframes slideDown {
+    0% {
+      opacity: 0;
+      padding: 0;
+    }
+    50% {
+        padding-left: .2em;
+    }
+    100% {
+      opacity: 1;
+    }
+  }

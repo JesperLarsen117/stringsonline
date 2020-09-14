@@ -46,12 +46,21 @@ nav {
                         padding: 1em;
                         margin: 0 .5em;
                         text-decoration: none;
+                        transition: 200ms ease-in-out;
+                        &:hover {
+                            color: var(--highlight);
+                        }
                     }
                     .login-button {
                         background-color: var(--highlight);
                         color: var(--dark-font);
                         padding: .2em 2em;
                         border-radius: 4px;
+                        &:hover {
+                           color: var(--dark-font);
+                           box-shadow: 0 0 .4em 1px rgba(0, 249, 183, .6);
+                           background-color: var(--highlight);
+                        }
                     }
                 }
             }
