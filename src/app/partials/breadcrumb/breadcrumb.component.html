@@ -1,1 +1,10 @@
-hejsa
+<section class="breadCrumb-container">
+    <span class="material-icons"> home </span>
+    <a routerLink="">Forside</a>
+    <div class="breadCrumb-link-container" *ngIf="breadcrumbs">
+        <div *ngFor="let item of breadcrumbs">
+            <span class="separation">/</span>
+            <a routerLink="item.url">{{item.place}}</a>
+        </div>
+    </div>
+</section>

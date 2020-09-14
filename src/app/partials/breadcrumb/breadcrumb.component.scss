@@ -1,0 +1,19 @@
+.breadCrumb-container {
+    display: flex;
+    border-bottom: 1px solid #393939;
+    padding: 1em 0;
+    a {
+        color: var(--highlight);
+        text-decoration: none;
+    }
+    span {
+        color: var(--highlight);
+    }
+    .separation {
+        color: white;
+        margin: 0 .3em;
+    }
+    .breadCrumb-link-container {
+    display: flex;
+    }
+}

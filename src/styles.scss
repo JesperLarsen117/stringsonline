@@ -18,20 +18,24 @@ h6,
 p, 
 a,
 span, 
-button {
+button, 
+details, 
+summary {
     color: white;
 }
 p {
     font-size: .8em;
 }
 
+
+.page-header, .page-main {
+    width: 80%;
+    margin: 0 auto 1em auto;
+}
+// page colors as variables
 :root {
     --dark-font: #131313;
     --highlight: #00F9B6;
-    --border-color: #0A1D1C;
-    --input-fill: #1F5E5B;
-}
-.page-header {
-    width: 80%;
-    margin: 0 auto;
+    --border-color: #1F5E5B;
+    --input-fill: #0A1D1C;
 }

@@ -1,0 +1,6 @@
+<aside class="left-menu">
+    <details *ngFor="let product of products">
+        <summary>{{product.title}}</summary>
+        <a *ngFor="let item of product.subgroups" routerLink="produkter/{{item.id}}">{{item.title}}</a>
+    </details>
+</aside>

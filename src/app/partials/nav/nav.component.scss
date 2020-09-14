@@ -3,6 +3,7 @@ nav {
     display: grid;
     grid-template-columns: 1fr 30%;
     gap: 1em;
+    border-bottom: 1px solid #393939;
     .contact-icons {
         grid-column: 2;
         display: flex;
@@ -78,6 +79,7 @@ nav {
                 width: 60px;
                 border: none;
                 background-color: var(--highlight);
+                cursor: pointer;
                 span {
                     color: var(--input-fill);
                 }

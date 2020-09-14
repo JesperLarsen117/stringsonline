@@ -8,6 +8,8 @@ import { ErrorComponent } from './pages/error/error.component';
 import { NavComponent } from './partials/nav/nav.component';
 import { FooterComponent } from './partials/footer/footer.component';
 import { BreadcrumbComponent } from './partials/breadcrumb/breadcrumb.component';
+import { SideMenuComponent } from './partials/side-menu/side-menu.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,11 +18,13 @@ import { BreadcrumbComponent } from './partials/breadcrumb/breadcrumb.component'
     ErrorComponent,
     NavComponent,
     FooterComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    SideMenuComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

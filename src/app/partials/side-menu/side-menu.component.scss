@@ -1,0 +1,21 @@
+.left-menu {
+    background-color: var(--input-fill);
+    border: 1px solid var(--border-color);
+    details {
+        margin: 1em 0;
+        user-select: none;
+        cursor: pointer;
+        summary {
+            user-select: none;
+            padding-left: 1em;
+            &::-webkit-details-marker {
+                display:none;
+            }
+        }
+        a {
+            display: block;
+            padding: .2em 2em;
+            text-decoration: none;
+        }
+    }
+}
