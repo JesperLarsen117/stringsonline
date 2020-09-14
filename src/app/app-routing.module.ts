@@ -11,8 +11,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'forside', pathMatch: 'full' },
   { path: 'forside', component: FrontpageComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'produkter/:id', component: ProdukterComponent },
-  { path: 'produkt/:id', component: ProductComponent },
+  { path: 'produkter/:type/:typeTwo/:id', component: ProdukterComponent },
+  { path: 'produkt/:type/:typeTwo/:typeId/:id', component: ProductComponent },
   { path: '**', component: ErrorComponent }
 ];
 

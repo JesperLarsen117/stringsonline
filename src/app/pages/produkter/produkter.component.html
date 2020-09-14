@@ -1,12 +1,15 @@
 <header class="page-header">
     <app-nav></app-nav>
-    <breadcrumb [breadcrumbs]="[{place: 'produkter', url: '/produkter'}]"></breadcrumb>
+    <breadcrumb
+        [breadcrumbs]="[{place: type, url: '/' },  {place: typeTwo, url: '/produkter/'+ type + '/' + typeTwo + '/' + productTypeId}]">
+    </breadcrumb>
 </header>
 <main class="page-main">
     <app-side-menu></app-side-menu>
     <h2 *ngIf="!product">Varen findes ikke</h2>
     <section class="product-container" *ngIf="product">
         <product-card *ngFor="let item of product" [image]="item.image_fullpath" [title]="item.name"
-            [teaser]="item.description_short" [price]="item.price" [stock]="item.stock" [id]="item.id"></product-card>
+            [teaser]="item.description_short" [price]="item.price" [stock]="item.stock" [id]="item.id"
+            [url]="[type, typeTwo, productTypeId]"></product-card>
     </section>
 </main>

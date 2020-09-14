@@ -2,7 +2,8 @@
     <details *ngFor="let product of products">
         <summary>{{product.title}}</summary>
         <div class="dropdown-links">
-            <a *ngFor="let item of product.subgroups" routerLink="/produkter/{{item.id}}">{{item.title}}</a>
+            <a *ngFor="let item of product.subgroups"
+                routerLink="/produkter/{{product.title}}/{{item.title}}/{{item.id}}/">{{item.title}}</a>
         </div>
     </details>
 </aside>

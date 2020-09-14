@@ -12,9 +12,12 @@ export class ProductCardComponent implements OnInit {
   @Input('price') price;
   @Input('stock') stock;
   @Input('id') id;
+  @Input('url') url;
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.url);
+
   }
 
 }

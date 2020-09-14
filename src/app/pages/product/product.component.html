@@ -1,6 +1,8 @@
 <header class="page-header">
     <app-nav></app-nav>
-    <breadcrumb [breadcrumbs]="[{place: 'produkt', url: '/produkt'}]"></breadcrumb>
+    <breadcrumb *ngIf="product"
+        [breadcrumbs]="[{place: type, url: '/' },  {place: typeTwo, url: '/produkter/'+ type + '/' + typeTwo + '/' + productTypeId}, {place: product.name, url: '/produkt/'+ type + '/' + typeTwo + '/' + productTypeId + '/' + productId}]">
+    </breadcrumb>
 </header>
 <main class="page-main">
     <app-side-menu></app-side-menu>

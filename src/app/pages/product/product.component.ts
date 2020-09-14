@@ -10,6 +10,9 @@ import { HttpService } from 'src/app/services/http.service';
 export class ProductComponent implements OnInit {
   product: any;
   productId = this.route.snapshot.params.id;
+  type = this.route.snapshot.params.type
+  typeTwo = this.route.snapshot.params.typeTwo
+  productTypeId = this.route.snapshot.params.typeId;
   constructor(private http: HttpService, private route: ActivatedRoute, private router: Router) { }
 
   async ngOnInit(): Promise<void> {

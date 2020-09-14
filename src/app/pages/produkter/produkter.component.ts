@@ -10,11 +10,17 @@ import { HttpService } from 'src/app/services/http.service';
 export class ProdukterComponent implements OnInit {
   product: any;
   productId = this.route.snapshot.params.id;
+  type = this.route.snapshot.params.type
+  typeTwo = this.route.snapshot.params.typeTwo
+  productTypeId: any;
   constructor(private http: HttpService, private route: ActivatedRoute, private router: Router) { }
 
   async ngOnInit(): Promise<void> {
     this.product = await this.http.getProduct(this.productId).toPromise();
+    this.productTypeId = this.product.group.id;
     this.product = this.product.group.products;
+
+
     this.router.events.subscribe(async res => {
       if (res instanceof NavigationEnd) {
         this.productId = this.route.snapshot.params.id;
