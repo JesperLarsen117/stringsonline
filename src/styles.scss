@@ -40,6 +40,7 @@ p {
     display: grid;
     grid-template-columns: 15% 1fr;
     gap: 1em;
+    min-height: 59.5vh;
 }
 // page colors as variables
 :root {
