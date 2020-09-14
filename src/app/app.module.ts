@@ -7,6 +7,7 @@ import { FrontpageComponent } from './pages/frontpage/frontpage.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { NavComponent } from './partials/nav/nav.component';
 import { FooterComponent } from './partials/footer/footer.component';
+import { BreadcrumbComponent } from './partials/breadcrumb/breadcrumb.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { FooterComponent } from './partials/footer/footer.component';
     FrontpageComponent,
     ErrorComponent,
     NavComponent,
-    FooterComponent
+    FooterComponent,
+    BreadcrumbComponent
   ],
   imports: [
     BrowserModule,

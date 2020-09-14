@@ -1,0 +1,88 @@
+nav {
+    padding: 3em 0;
+    display: grid;
+    grid-template-columns: 1fr 30%;
+    gap: 1em;
+    .contact-icons {
+        grid-column: 2;
+        display: flex;
+        align-items: center;
+        span {
+            & ~span {
+                margin-left: .5em
+            }
+        }
+        p {
+            margin-left: .5em;
+        }
+    }
+    figure {
+        position: relative;
+        grid-row: 2;
+        img {
+            position: relative;
+            z-index: 1;
+            width: 300px;
+        }
+        figcaption {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-56%);
+            left: 12%;
+            height: 45px;
+            width: calc(100% - 12%);
+            border: 2px solid white;
+            border-radius: 4px;
+            ul {
+                position: absolute;
+                right: 0;
+                display: flex;
+                top: 50%;
+                transform: translateY(-50%);
+                    li {
+                    list-style: none;
+                    a {
+                        padding: 1em;
+                        margin: 0 .5em;
+                        text-decoration: none;
+                    }
+                    .login-button {
+                        background-color: var(--highlight);
+                        color: var(--dark-font);
+                        padding: .2em 2em;
+                        border-radius: 4px;
+                    }
+                }
+            }
+        }
+
+    }
+    .search-nav {
+        margin-top: 1.68em;
+        .search-form {
+            columns: 1 / 2;
+            display: flex;
+            input {
+                border-radius: 4px;
+                padding: .8em;
+                width: 100%;
+                border: 1px solid var(--border-color);
+                background-color: var(--input-fill);
+                &::placeholder {
+                    color: var(--highlight);
+                }
+            }
+            button {
+                margin: .12em;
+                border-radius: 4px;
+                width: 60px;
+                border: none;
+                background-color: var(--highlight);
+                span {
+                    color: var(--input-fill);
+                }
+            }
+        }
+    }
+   
+}

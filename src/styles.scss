@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Titillium Web', sans-serif;
+}
+body {
+    background-color: #131313;
+}
+
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6, 
+p, 
+a,
+span, 
+button {
+    color: white;
+}
+p {
+    font-size: .8em;
+}
+
+:root {
+    --dark-font: #131313;
+    --highlight: #00F9B6;
+    --border-color: #0A1D1C;
+    --input-fill: #1F5E5B;
+}
+.page-header {
+    width: 80%;
+    margin: 0 auto;
+}
