@@ -36,27 +36,29 @@ export class CartService {
     cart = cart.cartlines;
     if (!cart) {
       await this.http.postCart(body, { headers }).toPromise()
-      return;
-    }
-    const check = cart.some(e => e.product_id === id);
-    if (check) {
-      for (const iterator of cart) {
-        if (iterator.product_id === id) {
-          const body = await {
-            product_id: id,
-            field: 'quantity',
-            value: +iterator.quantity + 1
-          };
-          await this.http.patchCart(body, { headers }).toPromise()
-          this.cartSubject.next('cart changed');
-        }
-      }
-    } else {
-      await this.http.postCart(body, { headers }).toPromise()
       this.cartSubject.next('cart changed');
+    } else {
+      const check = cart.some(e => e.product_id === id);
+      if (check) {
+        for (const iterator of cart) {
+          if (iterator.product_id === id) {
+            const body = {
+              product_id: id,
+              field: 'quantity',
+              value: +iterator.quantity + 1
+            };
+            await this.http.patchCart(body, { headers }).toPromise()
+            this.cartSubject.next('cart changed');
+          }
+        }
+      } else {
+        await this.http.postCart(body, { headers }).toPromise()
+        this.cartSubject.next('cart changed');
+      }
     }
   }
   async clearCart() {
     await this.http.deleteCart().toPromise();
+    this.cartSubject.next('cart changed');
   }
 }

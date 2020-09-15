@@ -21,11 +21,12 @@ export class KurvComponent implements OnInit {
 
     this.itemsInCart = await this.cart.get().toPromise();
     this.itemsInCart = this.itemsInCart.cartlines;
+    let totalMoneyAmount: number | string = 0
     if (this.itemsInCart) {
       for (const itemInCart of this.itemsInCart) {
         this.products = await this.http.getProductDetails(itemInCart.product_id).toPromise();
         this.products = this.products.item
-        this.totalPrice = parseFloat(this.totalPrice + this.products.price).toFixed(2);
+        totalMoneyAmount = totalMoneyAmount + +this.products.price;
         this.product.push({
           name: this.products.name,
           image: this.products.image.fullpath,
@@ -36,12 +37,13 @@ export class KurvComponent implements OnInit {
         });
 
       }
+      this.totalPrice = totalMoneyAmount
+      console.log(this.totalPrice);
+
     }
   }
   clearCart() {
-    this.totalPrice = 0
-    console.log(this.totalPrice);
-
+    this.totalPrice = 0;
     const elements = this.elem.nativeElement.querySelectorAll('.cartCard');
     for (const iterator of elements) {
       iterator.remove();

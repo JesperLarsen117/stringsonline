@@ -25,29 +25,25 @@ export class NavComponent implements OnInit {
     );
     this.totalNumberOfItems = await this.http.getCart({ headers }).toPromise();
     this.totalNumberOfItems = this.totalNumberOfItems.cartlines;
-    if (this.totalNumberOfItems) {
-      for (const item of this.totalNumberOfItems) {
-        this.totalItems = (item.quantity) ? +this.totalItems + +item.quantity : 0
-      }
-      console.log(this.totalItems);
-      this.cart.cartSubject.subscribe(async status => {
-        console.log(status);
-
-        let amount = 0;
-        this.totalNumberOfItems = await this.http.getCart({ headers }).toPromise();
-        this.totalNumberOfItems = this.totalNumberOfItems.cartlines;
-        if (this.totalNumberOfItems) {
-          for (const item of this.totalNumberOfItems) {
-            console.log(item.quantity);
-            amount = (item.quantity) ? amount + +item.quantity : 0
-          }
-          console.log(amount);
-          this.totalItems = amount
-        } else {
-          amount = 0
-        }
-      })
+    this.totalNumberOfItems = this.totalNumberOfItems ? this.totalNumberOfItems : [{ quantity: 0 }]
+    for (const item of this.totalNumberOfItems) {
+      this.totalItems = (item.quantity) ? +this.totalItems + +item.quantity : 0
     }
+    this.cart.cartSubject.subscribe(async status => {
+      let amount = 0;
+      this.totalNumberOfItems = await this.http.getCart({ headers }).toPromise();
+      this.totalNumberOfItems = this.totalNumberOfItems.cartlines;
+
+      if (this.totalNumberOfItems) {
+        for (const item of this.totalNumberOfItems) {
+          amount = (item.quantity) ? amount + +item.quantity : 0
+        }
+        this.totalItems = amount
+      } else {
+        this.totalItems = 0
+      }
+    })
+
 
   }
 

@@ -48,17 +48,3 @@
     }
    
 }
-
-
-@keyframes deleted {
-    from {
-        opacity: 1;
-        transform: scale(1);
-        height: 182px;
-    }
-    to {
-        opacity: 0;
-        transform: scale(.5);
-        height: 0;
-    }
-}
