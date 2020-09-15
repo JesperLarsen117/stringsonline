@@ -56,4 +56,7 @@ export class CartService {
       this.cartSubject.next('cart changed');
     }
   }
+  async clearCart() {
+    await this.http.deleteCart().toPromise();
+  }
 }

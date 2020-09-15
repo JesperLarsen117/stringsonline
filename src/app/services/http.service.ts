@@ -27,12 +27,18 @@ export class HttpService {
     }
     return this.products;
   }
+  // ///////////////////////
+  // Products.
+  // ///////////////////////
   getProduct(id) {
     return this.http.get(`https://api.mediehuset.net/stringsonline/productgroups/${id}`);
   }
   getProductDetails(id) {
     return this.http.get(`https://api.mediehuset.net/stringsonline/products/${id}`);
   }
+  // ///////////////////////
+  // Shopping cart.
+  // ///////////////////////
   postCart(body: object, header) {
     return this.http.post('https://api.mediehuset.net/stringsonline/cart', body, header);
   }
@@ -48,5 +54,12 @@ export class HttpService {
       `Bearer ${this.cookie.get("token")}`
     );
     return this.http.delete(`https://api.mediehuset.net/stringsonline/cart/${id}`, { headers })
+  }
+  deleteCart() {
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `Bearer ${this.cookie.get("token")}`
+    );
+    return this.http.delete('https://api.mediehuset.net/stringsonline/cart', { headers });
   }
 }
