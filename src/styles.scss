@@ -5,6 +5,30 @@
     box-sizing: border-box;
     font-family: 'Titillium Web', sans-serif;
 }
+* {
+    &::-webkit-scrollbar {
+        width: 8px;        
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: var(--input-fill);
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: var(--border-color);
+        border-radius: 2px;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+        background: var(--highlight);
+
+
+    }
+}
 body {
     background-color: #131313;
 }

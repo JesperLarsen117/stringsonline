@@ -18,8 +18,6 @@ export class AuthService {
   // login, return token.
 
   public get isOnline(): boolean {
-    console.log(this.userSubject);
-
     if (this.userSubject.value) return true;
     if (!this.userSubject.value) return false;
   }

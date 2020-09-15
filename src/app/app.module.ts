@@ -19,6 +19,8 @@ import { ProdukterComponent } from './pages/produkter/produkter.component';
 import { ProductCardComponent } from './pages/produkter/card/card.component';
 import { ProductComponent } from './pages/product/product.component';
 import { TermsoftradeComponent } from './pages/termsoftrade/termsoftrade.component';
+import { KurvComponent } from './pages/kurv/kurv.component';
+import { CartCardComponent } from './pages/kurv/cart-card/cart-card.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { TermsoftradeComponent } from './pages/termsoftrade/termsoftrade.compone
     ProdukterComponent,
     ProductCardComponent,
     ProductComponent,
-    TermsoftradeComponent
+    TermsoftradeComponent,
+    KurvComponent,
+    CartCardComponent
   ],
   imports: [
     BrowserModule,

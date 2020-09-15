@@ -19,10 +19,11 @@ export class ProdukterComponent implements OnInit {
     this.product = await this.http.getProduct(this.productId).toPromise();
     this.productTypeId = this.product.group.id;
     this.product = this.product.group.products;
-
-
     this.router.events.subscribe(async res => {
       if (res instanceof NavigationEnd) {
+        this.productId = this.route.snapshot.params.id;
+        this.type = this.route.snapshot.params.type
+        this.typeTwo = this.route.snapshot.params.typeTwo
         this.productId = this.route.snapshot.params.id;
         this.product = await this.http.getProduct(this.productId).toPromise();
         this.product = this.product.group.products;

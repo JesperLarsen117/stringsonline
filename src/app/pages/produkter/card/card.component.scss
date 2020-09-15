@@ -4,6 +4,7 @@
     margin: 1em 0;
     gap: 1em;
     border: 1px solid #393939;
+    animation: startAnimation 500ms ease-in-out forwards;
     figure {
         position: relative;
         width: 100%;
@@ -41,5 +42,16 @@
     }
     .right-products-card, .middle-products-card {
         padding: 1em;
+    }
+}
+
+@keyframes startAnimation {
+    from {
+        opacity: 0;
+        transform: scale(.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
     }
 }

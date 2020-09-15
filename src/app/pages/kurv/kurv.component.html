@@ -1,0 +1,15 @@
+<header class="page-header">
+    <app-nav></app-nav>
+    <breadcrumb></breadcrumb>
+</header>
+<main class="page-main">
+    <app-side-menu></app-side-menu>
+    <section class="cart-container">
+        <section class="cart-items">
+        </section>
+        <h2 *ngIf="!itemsInCart">Der er ikke nogen vare i din kurv.</h2>
+        <cart-card *ngFor="let item of product" [image]="item.image" [title]="item.name" [quantity]="item.quantity"
+            [price]="item.price" [stock]="item.stock" [id]="item.id">
+        </cart-card>
+    </section>
+</main>

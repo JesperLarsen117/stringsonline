@@ -2,18 +2,17 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
-  selector: 'product-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  selector: 'cart-card',
+  templateUrl: './cart-card.component.html',
+  styleUrls: ['./cart-card.component.scss']
 })
-export class ProductCardComponent implements OnInit {
+export class CartCardComponent implements OnInit {
   @Input('image') image;
   @Input('title') title;
-  @Input('teaser') teaser;
+  @Input('quantity') quantity;
   @Input('price') price;
   @Input('stock') stock;
   @Input('id') id;
-  @Input('url') url;
   constructor(public cart: CartService) { }
 
   ngOnInit(): void {
