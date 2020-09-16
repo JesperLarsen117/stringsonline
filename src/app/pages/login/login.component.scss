@@ -24,6 +24,15 @@
             border: none;
             color: var(--dark-font);
             cursor: pointer;
+            &:disabled {
+                opacity: .5;
+                cursor: default;
+            }
         }
     }
+}
+
+.danger {
+    margin-top: 1em;
+    color: rgb(255, 107, 107);
 }

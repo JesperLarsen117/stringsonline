@@ -1,6 +1,7 @@
 import { HttpHeaders } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
 import { CookieService } from 'src/app/services/cookie.service';
@@ -14,7 +15,8 @@ import { HttpService } from 'src/app/services/http.service';
 export class NavComponent implements OnInit {
   totalNumberOfItems: any;
   totalItems: any = 0;
-  constructor(private fb: FormBuilder, private cookie: CookieService, public auth: AuthService, private cart: CartService, private http: HttpService) { }
+  @ViewChild('quantity') quantity;
+  constructor(private fb: FormBuilder, private cookie: CookieService, public auth: AuthService, private cart: CartService, private http: HttpService, private router: Router) { }
   search = this.fb.group({
     search: ['']
   });
@@ -29,7 +31,13 @@ export class NavComponent implements OnInit {
     for (const item of this.totalNumberOfItems) {
       this.totalItems = (item.quantity) ? +this.totalItems + +item.quantity : 0
     }
+    // updates everytime, something new happends with the shopping cart.
     this.cart.cartSubject.subscribe(async status => {
+      this.quantity.nativeElement.classList.add('wriggle');
+      setTimeout(() => {
+        this.quantity.nativeElement.classList.remove('wriggle');
+      }, 200);
+      console.log(this.quantity.nativeElement);
       let amount = 0;
       this.totalNumberOfItems = await this.http.getCart({ headers }).toPromise();
       this.totalNumberOfItems = this.totalNumberOfItems.cartlines;
@@ -43,8 +51,9 @@ export class NavComponent implements OnInit {
         this.totalItems = 0
       }
     })
-
-
   }
-
+  onSubmit() {
+    console.log('lol');
+    this.router.navigateByUrl(`/søg/${this.search.get('search').value}`)
+  }
 }

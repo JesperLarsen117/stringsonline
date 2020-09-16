@@ -10,9 +10,12 @@
         <form class="login-form" (ngSubmit)="onSubmit()" [formGroup]="login">
             <label for="username">Brugernavn:</label>
             <input formControlName="username" type="text" id="username" placeholder="John@doe.com">
+            <p class="danger" *ngIf="!f.username.valid && f.username.touched">Du skal skrive et brugernavn.</p>
             <label for="password">adgangskode:</label>
             <input formControlName="password" type="password" id="password" placeholder="*******">
-            <button>Login</button>
+            <p class="danger" *ngIf="!f.password.valid && f.password.touched">Du skal skrive en adgangskode.</p>
+            <p class="danger" *ngIf="!couldLogin">Brugernavn eller Adgangskode er forkert.</p>
+            <button [disabled]="!login.valid">Login</button>
         </form>
     </section>
 </main>

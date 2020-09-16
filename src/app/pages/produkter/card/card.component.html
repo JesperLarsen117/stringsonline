@@ -4,7 +4,10 @@
     </figure>
     <section class="middle-products-card">
         <h2>{{title}}</h2>
-        <p>{{teaser}} <a class="readMore-products" href="/produkt/{{url[0]}}/{{url[1]}}/{{url[2]}}/{{id}}">Læs mere</a>
+        <p *ngIf="url[0] !== 'søg'">{{teaser}} <a class="readMore-products"
+                href="/produkt/{{url[0]}}/{{url[1]}}/{{url[2]}}/{{id}}">Læs mere</a>
+        <p *ngIf="url[0] === 'søg'">{{teaser}} <a class="readMore-products" href="/produkt/{{url[0]}}/{{url[1]}}">Læs
+                mere</a>
         </p>
     </section>
     <section class="right-products-card">

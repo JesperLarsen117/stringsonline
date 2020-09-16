@@ -6,7 +6,7 @@
         <p>+45 98 12 22 68</p>
         <div class="cart" routerLink="/Indkøbskurv">
             <span class="material-icons"> shopping_cart </span>
-            <span class="quantity">{{totalItems}}</span>
+            <span #quantity class="quantity">{{totalItems}}</span>
         </div>
     </section>
     <figure>
@@ -22,7 +22,7 @@
         </figcaption>
     </figure>
     <section class="search-nav">
-        <form class="search-form" [formGroup]="search">
+        <form class="search-form" [formGroup]="search" (ngSubmit)="onSubmit()">
             <input formControlName="search" type="text" placeholder="Indtast søgeord ">
             <button><span class="material-icons"> arrow_forward </span></button>
         </form>

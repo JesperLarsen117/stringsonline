@@ -1,7 +1,10 @@
 <header class="page-header">
     <app-nav></app-nav>
-    <breadcrumb *ngIf="product"
+    <breadcrumb *ngIf="product && this.type !== 'søg'"
         [breadcrumbs]="[{place: type, url: '/' },  {place: typeTwo, url: '/produkter/'+ type + '/' + typeTwo + '/' + productTypeId}, {place: product.name, url: '/produkt/'+ type + '/' + typeTwo + '/' + productTypeId + '/' + productId}]">
+    </breadcrumb>
+    <breadcrumb *ngIf="product && this.type === 'søg'"
+        [breadcrumbs]="[{place: type, url: '/søg' }, {place: product.name, url: '/produkt/'+ type + '/' + typeTwo + '/' + productTypeId + '/' + productId}]">
     </breadcrumb>
 </header>
 <main class="page-main">

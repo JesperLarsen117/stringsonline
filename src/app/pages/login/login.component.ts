@@ -11,11 +11,14 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   token: Object;
+  couldLogin: boolean = true;
   constructor(private fb: FormBuilder, public auth: AuthService, private cookie: CookieService) { }
+
   login = this.fb.group({
     username: ['', Validators.required],
     password: ['', Validators.required]
   });
+
   ngOnInit(): void {
   }
   async onSubmit() {
@@ -23,7 +26,9 @@ export class LoginComponent implements OnInit {
       username: this.login.get('username').value,
       password: this.login.get('password').value
     }
-    await this.auth.login(body).pipe(first()).subscribe(data => {
-    })
+    await this.auth.login(body).subscribe(res => res);
   }
+
+  get f() { return this.login.controls; }
+
 }

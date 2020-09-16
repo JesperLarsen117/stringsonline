@@ -1,0 +1,15 @@
+<header class="page-header">
+    <app-nav></app-nav>
+    <breadcrumb [breadcrumbs]="[{place: 'søg', url: '/søg'}]"></breadcrumb>
+</header>
+<main class="page-main">
+    <app-side-menu></app-side-menu>
+    <section class="search-container">
+        <h2 *ngIf="search === undefined">Bruge søgefeltet til at finde et bestemt produkt.</h2>
+        <h2 *ngIf="id">Søgeresultat af: <span>{{id}}</span></h2>
+        <product-card *ngFor="let item of search" [image]="item.image_fullpath" [title]="item.name"
+            [teaser]="item.description_short" [price]="item.price" [stock]="item.stock" [id]="item.id"
+            [url]="['søg', item.id]">
+        </product-card>
+    </section>
+</main>

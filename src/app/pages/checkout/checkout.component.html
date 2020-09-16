@@ -1,0 +1,77 @@
+<header class="page-header">
+    <app-nav></app-nav>
+    <breadcrumb [breadcrumbs]="[{place: 'Indkøbskurv', url: '/Indkøbskurv'}, {place: 'Kasse', url: '/kasse'}]">
+    </breadcrumb>
+</header>
+<main class="page-main">
+    <app-side-menu></app-side-menu>
+    <section>
+        <h1>Kasse</h1>
+        <form [formGroup]="order" class="orderForm" (ngSubmit)="onSubmit()">
+            <section>
+                <h3>Falturerings- & leveringsadresse</h3>
+                <input type="text" placeholder="Fornavn" formControlName="firstname">
+                <input type="text" placeholder="Efternavn" formControlName="lastname">
+                <input type="text" placeholder="Gade/Vej og husnummer" formControlName="street">
+                <div>
+                    <input type="number" placeholder="Postnr" formControlName="zipcode">
+                    <input type="text" placeholder="By" formControlName="city">
+
+                </div>
+                <div class="otherShippingaddress" (click)="otherAddress($event)">
+                    <input type="checkbox" formControlName="otherShippingaddress" id="otherShippingaddress">
+                    <label for="otherShippingaddress">Anden leveringsadresse</label>
+                </div>
+
+                <section class="otherAddress" #otherShippingAddress>
+                    <input type="text" placeholder="Gade/Vej og husnummer" formControlName="otherstreet">
+                    <div>
+                        <input type="number" placeholder="Postnr" formControlName="otherzipcode">
+                        <input type="text" placeholder="By" formControlName="othercity">
+                    </div>
+                </section>
+
+            </section>
+            <section>
+                <h3>Email & telefon</h3>
+                <input type="email" placeholder="Emailadresse" formControlName="email">
+                <div class="phoneNumber">
+                    <input type="number" placeholder="Telefonnummer" formControlName="phone">
+                    <p class="phoneInfo">Med dit telefonnummer kan vi kontakte dig i tilfælde af spørgsmål eller
+                        problemer. Hvis du
+                        oplyser dit mobilnummer, kan vi også sende dig en forsendelsesbekræftelse via SMS.</p>
+                </div>
+            </section>
+            <section class="paymentOption">
+                <h3>BetalingsMetode</h3>
+                <section class="payment-wrapper">
+                    <div class="payment-container" id="checkBank">
+                        <div class="payment-input" (click)="displayDiv($event)">
+                            <input type="radio" value="1" formControlName="payment" id="bank">
+                            <label for="bank">Bankoverførsel</label>
+                        </div>
+                        <div #bankPayment class="payment-input-information">
+                            <p>asd</p>
+                        </div>
+                    </div>
+                    <div class="payment-container" id="checkCard">
+                        <div class="payment-input" (click)="displayDiv($event)">
+                            <input type="radio" value="2" formControlName="payment" id="card">
+                            <label for="card">Kreditkort (MasterCard, VISA)</label>
+                        </div>
+                        <div #cardPayment class="payment-input-information">
+                            <input type="text" placeholder="Kortnummer" formControlName="cardNumber">
+                            <div>
+                                <input type="number" placeholder="Måned" formControlName="month">
+                                <input type="number" placeholder="år" formControlName="year">
+                            </div>
+                            <input type="text" placeholder="Kontrolciffer" formControlName="ctr">
+                            <input type="text" placeholder="Kort indhaver" formControlName="cardHolderName">
+                        </div>
+                    </div>
+                </section>
+                <button>BETAL</button>
+            </section>
+        </form>
+    </section>
+</main>

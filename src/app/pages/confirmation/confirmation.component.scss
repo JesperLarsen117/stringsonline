@@ -1,0 +1,81 @@
+.orderConfirmation-container {
+    display: grid;
+    grid-template-columns: 1fr 30%;
+    gap: 1em;
+    margin-bottom: 2em;
+    min-height: 450px;
+    .order-information {
+        border: 1px solid var(--highlight);
+        padding: 1em;
+        h2 {
+            text-align: center;
+            padding: .5em;
+            display: block;
+            width: 300px;
+            margin: 1em auto;
+            border-radius: 4px;
+            background-color: var(--highlight);
+            color: var(--dark-font);
+        }
+
+        article {
+            font-size: 1.2em;
+            width: 70%;
+            margin: 0 auto;
+            .border-bottom {
+                border-bottom: 1px solid var(--highlight);
+                padding: 1em 0;
+            }
+            .border-first {
+                display: grid;
+                grid-template-columns: 20% 1fr;
+                border-top: 1px solid var(--highlight);
+                p {
+                    &:last-child {
+                        color: var(--highlight);
+                    }
+                }
+            }
+            .grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                .end {
+                    justify-self: end;
+                }
+            }
+            .highlight {
+                color: var(--highlight);
+            }
+            .produckts {
+                display: grid;
+                grid-template-columns: 20% 1fr;
+                div {
+                    display: grid;
+                    grid-template-columns: 40% 1fr 1fr;
+                    grid-column: 2;
+                    .produckts-total {
+                        justify-self: end;
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+    .shipping {
+        align-self: center;
+        justify-self: center;
+        div {
+            display: flex;
+            p {
+                &:last-child {
+                    margin-left: .5em;
+                }
+            }
+        }
+        .margin-top {
+            margin-top: 2em;
+        
+        }
+
+    }
+}

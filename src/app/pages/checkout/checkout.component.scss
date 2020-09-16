@@ -1,0 +1,88 @@
+.orderForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1em 10em;
+    input[type=text], input[type=number], input[type=email] {
+        display: block;
+        padding: 0.5em;
+        width: 250px;
+        background-color: var(--input-fill);
+        border: 1px solid var(--border-color);
+        color: var(--highlight);
+        border-radius: 4px;
+        margin-top: 1em;
+        width: 100%;
+        &::placeholder {
+            color: var(--highlight);
+            opacity: .5;
+        }
+    }
+    label {
+        margin-left: 1em;
+        color: var(--highlight);
+    }
+    .otherShippingaddress {
+        display: block;
+        padding-top: 1em;
+    }
+    .phoneNumber {
+        position: relative;
+        .phoneInfo {
+            position: absolute;
+            z-index: -1;
+            padding: 1em;
+            bottom: -8em;
+            border-radius: 0 0 4px 4px;
+            background-color: #113B39;
+            color: var(--highlight);
+        }
+    }
+    .payment-wrapper {
+        .payment-input {
+            padding: 1em;
+        }
+        .payment-container {
+            background-color: var(--input-fill);
+            margin-top: 1em;
+            border-radius: 4px;
+            cursor: pointer;
+            .payment-input-information {
+                transition: 300ms ease-in-out;
+                padding: 0;
+                opacity: 0;
+                height: 0;
+                overflow: hidden;
+                transform: scale(.9);
+            }
+            .open {
+                padding: 1em;
+                opacity: 1;
+                height: auto;
+                overflow: unset;
+                transform: scale(1);
+
+            }
+        }
+        
+    }
+    button {
+        margin-top: 1em;
+
+        grid-column: 3;
+        width: 100%;
+        padding: 1em;
+        background-color: var(--highlight);
+        color: var(--dark-font);
+        border-radius: 4px;
+        border: none;
+        font-weight: bold;
+        &:disabled {
+            opacity: .5;
+        }
+    }
+    .otherAddress {
+        display: none;
+
+    }
+}
+

@@ -62,4 +62,25 @@ export class HttpService {
     );
     return this.http.delete('https://api.mediehuset.net/stringsonline/cart', { headers });
   }
+
+  // orderer
+  postOrder(body) {
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `Bearer ${this.cookie.get("token")}`
+    );
+    return this.http.post(`https://api.mediehuset.net/stringsonline/orders`, body, { headers })
+  }
+  getOrderById(id: string | number) {
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `Bearer ${this.cookie.get("token")}`
+    );
+    return this.http.get(`https://api.mediehuset.net/stringsonline/orders/${id}`, { headers })
+  }
+
+  // Search
+  getSearch(keyword) {
+    return this.http.get(`https://api.mediehuset.net/stringsonline/search/${keyword}`);
+  }
 }

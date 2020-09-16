@@ -21,6 +21,9 @@ import { ProductComponent } from './pages/product/product.component';
 import { TermsoftradeComponent } from './pages/termsoftrade/termsoftrade.component';
 import { KurvComponent } from './pages/kurv/kurv.component';
 import { CartCardComponent } from './pages/kurv/cart-card/cart-card.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { ConfirmationComponent } from './pages/confirmation/confirmation.component';
+import { SearchComponent } from './pages/search/search.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { CartCardComponent } from './pages/kurv/cart-card/cart-card.component';
     ProductComponent,
     TermsoftradeComponent,
     KurvComponent,
-    CartCardComponent
+    CartCardComponent,
+    CheckoutComponent,
+    ConfirmationComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

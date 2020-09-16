@@ -26,20 +26,19 @@ export class KurvComponent implements OnInit {
       for (const itemInCart of this.itemsInCart) {
         this.products = await this.http.getProductDetails(itemInCart.product_id).toPromise();
         this.products = this.products.item
-        totalMoneyAmount = totalMoneyAmount + +this.products.price;
+        const withQuantity = +this.products.price * +itemInCart.quantity
+        totalMoneyAmount = totalMoneyAmount + withQuantity;
         this.product.push({
           name: this.products.name,
           image: this.products.image.fullpath,
           price: this.products.price,
           stock: this.products.stock,
           id: itemInCart.id,
-          quantity: 1,
+          quantity: itemInCart.quantity,
         });
-
       }
       this.totalPrice = totalMoneyAmount
       console.log(this.totalPrice);
-
     }
   }
   clearCart() {

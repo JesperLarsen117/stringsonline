@@ -19,7 +19,6 @@ export class ProductComponent implements OnInit {
     this.product = await this.http.getProductDetails(this.productId).toPromise();
     this.product = this.product.item;
     console.log(this.product);
-
     this.router.events.subscribe(async res => {
       if (res instanceof NavigationEnd) {
         this.productId = this.route.snapshot.params.id;
