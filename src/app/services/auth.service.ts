@@ -19,8 +19,8 @@ export class AuthService {
   // login, return token.
 
   public get isOnline(): boolean {
-    if (this.userSubject.value) return true;
-    if (!this.userSubject.value) return false;
+    return this.userSubject.value ? true : false;
+
   }
 
   login(body) {

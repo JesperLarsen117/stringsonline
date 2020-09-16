@@ -24,6 +24,7 @@ import { CartCardComponent } from './pages/kurv/cart-card/cart-card.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { ConfirmationComponent } from './pages/confirmation/confirmation.component';
 import { SearchComponent } from './pages/search/search.component';
+import { OrderHistoryComponent } from './pages/order-history/order-history.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { SearchComponent } from './pages/search/search.component';
     CartCardComponent,
     CheckoutComponent,
     ConfirmationComponent,
-    SearchComponent
+    SearchComponent,
+    OrderHistoryComponent
   ],
   imports: [
     BrowserModule,

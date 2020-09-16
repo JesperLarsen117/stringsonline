@@ -1,0 +1,15 @@
+<header class="page-header">
+    <app-nav></app-nav>
+    <breadcrumb [breadcrumbs]="[{place: 'Ordrehistorik', url: '/ordrehistorik'}]">
+    </breadcrumb>
+</header>
+<main class="page-main">
+    <app-side-menu></app-side-menu>
+    <section class="order-history-container">
+        <article *ngFor="let item of orderHistory">
+            <p>{{unixTimestampToDate(item.created)}}</p>
+            <p>DKK {{item.total}}</p>
+            <p>Ordrenr. <span>{{item.id}}</span></p>
+        </article>
+    </section>
+</main>

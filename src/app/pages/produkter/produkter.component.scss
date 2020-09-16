@@ -1,3 +1,17 @@
-.product-container {
-    
+.filter {
+    display: flex;
+    justify-content: flex-end;
+    select {
+        border: 1px solid var(--border-color);
+        background-color: var(--highlight);
+        color: var(--dark-font);
+        padding: .5em 1em;
+        margin-left: 1em;
+        font-weight: 500;
+        
+        font-size: 1em;
+        option {
+        font-weight: 500;
+        }
+    }
 }

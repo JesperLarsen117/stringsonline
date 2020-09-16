@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { map, shareReplay, catchError } from 'rxjs/operators';
+import { AuthService } from './auth.service';
 import { CookieService } from './cookie.service';
 
 interface User {
@@ -16,7 +17,7 @@ export class HttpService {
   products: Observable<any>;
   userSubject = new Subject();
 
-  constructor(private http: HttpClient, private cookie: CookieService) { }
+  constructor(private http: HttpClient, private cookie: CookieService, private auth: AuthService) { }
   // Caching products.
   get products$(): Observable<any> {
     if (!this.products) {
@@ -44,9 +45,11 @@ export class HttpService {
   }
   patchCart(body: object, header) {
     return this.http.patch('https://api.mediehuset.net/stringsonline/cart', body, header);
+
   }
   getCart(header) {
     return this.http.get('https://api.mediehuset.net/stringsonline/cart', header);
+
   }
   deleteItemFromCart(id) {
     const headers = new HttpHeaders().set(
@@ -54,6 +57,7 @@ export class HttpService {
       `Bearer ${this.cookie.get("token")}`
     );
     return this.http.delete(`https://api.mediehuset.net/stringsonline/cart/${id}`, { headers })
+
   }
   deleteCart() {
     const headers = new HttpHeaders().set(
@@ -62,8 +66,9 @@ export class HttpService {
     );
     return this.http.delete('https://api.mediehuset.net/stringsonline/cart', { headers });
   }
-
-  // orderer
+  // ///////////////////////
+  // order
+  // ///////////////////////
   postOrder(body) {
     const headers = new HttpHeaders().set(
       "Authorization",
@@ -78,9 +83,25 @@ export class HttpService {
     );
     return this.http.get(`https://api.mediehuset.net/stringsonline/orders/${id}`, { headers })
   }
+  getOrderHistory() {
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `Bearer ${this.cookie.get("token")}`
+    );
+    return this.http.get('https://api.mediehuset.net/stringsonline/orders', { headers });
+  }
 
-  // Search
+  // ///////////////////////
+  // search
+  // ///////////////////////
   getSearch(keyword) {
     return this.http.get(`https://api.mediehuset.net/stringsonline/search/${keyword}`);
+  }
+
+  // ///////////////////////
+  // brand
+  // ///////////////////////
+  getBrands() {
+    return this.http.get('https://api.mediehuset.net/stringsonline/brands');
   }
 }

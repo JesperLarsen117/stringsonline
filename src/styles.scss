@@ -51,10 +51,15 @@ label {
 button {
     cursor: pointer;
 }
-p {
-    font-size: .8em;
+a {
+    cursor: pointer;
 }
-
+p {
+    font-size: 1em;
+}
+label {
+    user-select: none;
+}
 
 .page-header, .page-main {
     width: 80%;

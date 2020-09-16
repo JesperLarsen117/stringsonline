@@ -37,9 +37,11 @@
                 <input type="email" placeholder="Emailadresse" formControlName="email">
                 <div class="phoneNumber">
                     <input type="number" placeholder="Telefonnummer" formControlName="phone">
-                    <p class="phoneInfo">Med dit telefonnummer kan vi kontakte dig i tilfælde af spørgsmål eller
+                    <p class="phoneInfo">
+                        Med dit telefonnummer kan vi kontakte dig i tilfælde af spørgsmål eller
                         problemer. Hvis du
-                        oplyser dit mobilnummer, kan vi også sende dig en forsendelsesbekræftelse via SMS.</p>
+                        oplyser dit mobilnummer, kan vi også sende dig en forsendelsesbekræftelse via SMS.
+                    </p>
                 </div>
             </section>
             <section class="paymentOption">
@@ -51,7 +53,8 @@
                             <label for="bank">Bankoverførsel</label>
                         </div>
                         <div #bankPayment class="payment-input-information">
-                            <p>asd</p>
+                            <input type="text" placeholder="REG.NR">
+                            <input type="text" placeholder="KONTONR">
                         </div>
                     </div>
                     <div class="payment-container" id="checkCard">

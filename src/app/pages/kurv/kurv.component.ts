@@ -2,6 +2,9 @@ import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/co
 import { CartService } from 'src/app/services/cart.service';
 import { HttpService } from 'src/app/services/http.service';
 import { ViewEncapsulation } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-kurv',
@@ -15,10 +18,9 @@ export class KurvComponent implements OnInit {
   products: any;
   product: any = [];
   totalPrice: number | string = 0;
-  constructor(public cart: CartService, private http: HttpService, private renderer: Renderer2, private elem: ElementRef) { }
+  constructor(public cart: CartService, private http: HttpService, private renderer: Renderer2, private elem: ElementRef, private auth: AuthService, private router: Router) { }
 
   async ngOnInit(): Promise<void> {
-
     this.itemsInCart = await this.cart.get().toPromise();
     this.itemsInCart = this.itemsInCart.cartlines;
     let totalMoneyAmount: number | string = 0
@@ -38,8 +40,24 @@ export class KurvComponent implements OnInit {
         });
       }
       this.totalPrice = totalMoneyAmount
-      console.log(this.totalPrice);
     }
+    this.cart.cartSubject.subscribe(async status => {
+      this.itemsInCart = await this.cart.get().toPromise();
+      this.itemsInCart = this.itemsInCart.cartlines;
+      let totalMoneyAmount: number | string = 0
+      if (this.itemsInCart) {
+        for (const itemInCart of this.itemsInCart) {
+          this.products = await this.http.getProductDetails(itemInCart.product_id).toPromise();
+          this.products = this.products.item
+          const withQuantity = +this.products.price * +itemInCart.quantity
+          totalMoneyAmount = totalMoneyAmount + withQuantity;
+        }
+        this.totalPrice = totalMoneyAmount
+      } else {
+        this.totalPrice = 0;
+
+      }
+    })
   }
   clearCart() {
     this.totalPrice = 0;

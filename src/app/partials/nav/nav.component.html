@@ -4,9 +4,9 @@
         <p>SALES@STRINGSONLINE.COM</p>
         <span class="material-icons"> phone </span>
         <p>+45 98 12 22 68</p>
-        <div class="cart" routerLink="/Indkøbskurv">
+        <div class="cart" [routerLink]="auth.isOnline ? '/Indkøbskurv' : '/'">
             <span class="material-icons"> shopping_cart </span>
-            <span #quantity class="quantity">{{totalItems}}</span>
+            <span *ngIf="auth.isOnline" #quantity class="quantity">{{totalItems}}</span>
         </div>
     </section>
     <figure>
@@ -16,8 +16,8 @@
                 <li><a routerLink="">Forside</a></li>
                 <li><a routerLink="/Salgs-og-handelbetingelser">Salgs- og handelbetingelser</a></li>
                 <li *ngIf="!auth.isOnline"><a class="login-button" routerLink="/login">Login</a></li>
-                <li *ngIf="auth.isOnline"><a routerLink="">Ordrehistorik</a></li>
-                <li *ngIf="auth.isOnline"><a class="login-button" (click)="auth.logout()">Logout</a></li>
+                <li *ngIf="auth.isOnline"><a routerLink="/ordrehistorik">Ordrehistorik</a></li>
+                <li *ngIf="auth.isOnline"><a class="login-button" (click)="auth.logout()">Logud</a></li>
             </ul>
         </figcaption>
     </figure>

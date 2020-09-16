@@ -6,10 +6,26 @@
 </header>
 <main class="page-main">
     <app-side-menu></app-side-menu>
-    <h2 *ngIf="!product">Varen findes ikke</h2>
-    <section class="product-container" *ngIf="product">
-        <product-card *ngFor="let item of product" [image]="item.image_fullpath" [title]="item.name"
-            [teaser]="item.description_short" [price]="item.price" [stock]="item.stock" [id]="item.id"
-            [url]="[type, typeTwo, productTypeId]"></product-card>
+    <section>
+        <section class="filter">
+            <select name="brands" id="brands" (change)="filterBrand($event)">
+                <option default hidden value="0">Producent</option>
+                <option value='null'>Vis alle</option>
+                <option *ngFor="let item of brands" value="{{item.title}}">{{item.title}}</option>
+            </select>
+            <select name="brands" id="brands" (change)="filterValues($event)">
+                <option default hidden value="0">Sorter efter ...</option>
+                <option value="1">Pris høj til lav</option>
+                <option value="2">Pris lav til høj</option>
+                <option value="3">Fra A til Å</option>
+                <option value="4">Fra Å til A</option>
+            </select>
+        </section>
+        <h2 *ngIf="!product || product.length <= 0">Varen findes ikke</h2>
+        <section class="product-container" *ngIf="product">
+            <product-card *ngFor="let item of product" [image]="item.image_fullpath" [title]="item.name"
+                [teaser]="item.description_short" [price]="item.price" [stock]="item.stock" [id]="item.id"
+                [url]="[type, typeTwo, productTypeId]"></product-card>
+        </section>
     </section>
 </main>

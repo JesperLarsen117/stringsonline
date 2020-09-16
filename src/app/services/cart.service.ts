@@ -19,11 +19,13 @@ export class CartService {
   get() {
     const headers = this.headers
     return this.http.getCart({ headers })
+
   }
   async deleteItem(id, e) {
     e.currentTarget.parentNode.parentNode.classList.add('deleted');
     console.log(await this.http.deleteItemFromCart(id).toPromise());
     this.cartSubject.next('cart changed');
+
   }
   // Posts to the cart.
   async addToCart(id) {
@@ -55,7 +57,9 @@ export class CartService {
         await this.http.postCart(body, { headers }).toPromise()
         this.cartSubject.next('cart changed');
       }
+
     }
+
   }
   async clearCart() {
     await this.http.deleteCart().toPromise();

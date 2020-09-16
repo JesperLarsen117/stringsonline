@@ -1,0 +1,31 @@
+.order-history-container {
+    width: 58%;
+    margin-left: 4em;
+    article{
+        display: grid;
+        grid-template-columns: 1fr 50% 1fr;
+        text-align: center;
+        margin: 1em 0;
+        p {
+            padding: 1em;
+            &:first-child {
+                border: 1px solid #393939;
+                border-radius: 4px;
+            }
+            &:nth-child(2) {
+                width: 110%;
+                transform: translateX(-5%);
+                border-top: 1px solid #393939;
+                border-bottom: 1px solid #393939;
+            }
+            &:last-child {
+                border: 1px solid #393939;
+                border-radius: 4px;
+                background-color: #232323;
+                span {
+                    color: var(--highlight);
+                }
+            }
+        }
+    }
+}

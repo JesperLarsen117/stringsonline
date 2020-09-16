@@ -17,8 +17,6 @@ export class ProductCardComponent implements OnInit {
   constructor(public cart: CartService) { }
 
   ngOnInit(): void {
-    console.log(this.url);
-
   }
 
 }

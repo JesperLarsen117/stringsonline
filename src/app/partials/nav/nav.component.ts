@@ -21,39 +21,40 @@ export class NavComponent implements OnInit {
     search: ['']
   });
   async ngOnInit(): Promise<void> {
-    const headers = new HttpHeaders().set(
-      "Authorization",
-      `Bearer ${this.cookie.get("token")}`
-    );
-    this.totalNumberOfItems = await this.http.getCart({ headers }).toPromise();
-    this.totalNumberOfItems = this.totalNumberOfItems.cartlines;
-    this.totalNumberOfItems = this.totalNumberOfItems ? this.totalNumberOfItems : [{ quantity: 0 }]
-    for (const item of this.totalNumberOfItems) {
-      this.totalItems = (item.quantity) ? +this.totalItems + +item.quantity : 0
-    }
-    // updates everytime, something new happends with the shopping cart.
-    this.cart.cartSubject.subscribe(async status => {
-      this.quantity.nativeElement.classList.add('wriggle');
-      setTimeout(() => {
-        this.quantity.nativeElement.classList.remove('wriggle');
-      }, 200);
-      console.log(this.quantity.nativeElement);
-      let amount = 0;
+    if (this.auth.isOnline) {
+
+      const headers = new HttpHeaders().set(
+        "Authorization",
+        `Bearer ${this.cookie.get("token")}`
+      );
       this.totalNumberOfItems = await this.http.getCart({ headers }).toPromise();
       this.totalNumberOfItems = this.totalNumberOfItems.cartlines;
-
-      if (this.totalNumberOfItems) {
-        for (const item of this.totalNumberOfItems) {
-          amount = (item.quantity) ? amount + +item.quantity : 0
-        }
-        this.totalItems = amount
-      } else {
-        this.totalItems = 0
+      this.totalNumberOfItems = this.totalNumberOfItems ? this.totalNumberOfItems : [{ quantity: 0 }]
+      for (const item of this.totalNumberOfItems) {
+        this.totalItems = (item.quantity) ? +this.totalItems + +item.quantity : 0
       }
-    })
+      // updates everytime, something new happends with the shopping cart.
+      this.cart.cartSubject.subscribe(async status => {
+        this.quantity.nativeElement.classList.add('wriggle');
+        setTimeout(() => {
+          this.quantity.nativeElement.classList.remove('wriggle');
+        }, 200);
+        let amount = 0;
+        this.totalNumberOfItems = await this.http.getCart({ headers }).toPromise();
+        this.totalNumberOfItems = this.totalNumberOfItems.cartlines;
+
+        if (this.totalNumberOfItems) {
+          for (const item of this.totalNumberOfItems) {
+            amount = (item.quantity) ? amount + +item.quantity : 0
+          }
+          this.totalItems = amount
+        } else {
+          this.totalItems = 0
+        }
+      })
+    }
   }
   onSubmit() {
-    console.log('lol');
     this.router.navigateByUrl(`/søg/${this.search.get('search').value}`)
   }
 }
