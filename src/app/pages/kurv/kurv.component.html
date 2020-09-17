@@ -20,7 +20,8 @@
                 </div>
                 <button (click)="clearCart()">RYD</button>
             </div>
-            <a class="buy" href="/kasse">Til kassen</a>
+            <a class="buy"
+                [routerLink]="(totalPrice > 0) ? '/kasse' : '/'">{{(totalPrice > 0) ? 'Til kassen' : 'Tilføj noget til din kurv'}}</a>
         </section>
     </section>
 </main>
