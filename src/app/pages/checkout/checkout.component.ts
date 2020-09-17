@@ -45,7 +45,6 @@ export class CheckoutComponent implements OnInit {
   ngOnInit(): void {
   }
   displayDiv(e) {
-    console.log(e.currentTarget.parentNode.id[0] === 'checkBank');
     if (e.currentTarget.parentNode.id === 'checkBank') {
       this.bankPayment.nativeElement.classList.add('open')
       this.cardPayment.nativeElement.classList.remove('open')
@@ -75,7 +74,6 @@ export class CheckoutComponent implements OnInit {
 
 
     this.http.postOrder(body).subscribe((res: any) => {
-      console.log(res);
       if (res.status) {
         this.router.navigateByUrl(`/ordrebekræftelse/${res.order_id}`)
       }
