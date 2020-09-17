@@ -51,17 +51,14 @@ export class CheckoutComponent implements OnInit {
       this.cardPayment.nativeElement.classList.remove('open')
       this.bankPayment.nativeElement.parentNode.childNodes[0].childNodes[0].checked = true;
       this.cardPayment.nativeElement.parentNode.childNodes[0].childNodes[0].checked = false;
-      console.dir();
-
     }
     if (e.currentTarget.parentNode.id === 'checkCard') {
       this.cardPayment.nativeElement.classList.add('open')
       this.bankPayment.nativeElement.classList.remove('open')
       this.cardPayment.nativeElement.parentNode.childNodes[0].childNodes[0].checked = true;
       this.bankPayment.nativeElement.parentNode.childNodes[0].childNodes[0].checked = false;
-
     }
-  } otherShippingaddress
+  }
   onSubmit() {
     const body = {
       firstname: this.order.get('firstname').value,

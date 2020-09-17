@@ -33,6 +33,21 @@
 }
 
 .danger {
-    margin-top: 1em;
+    display: block;
+    margin-top: .5em;
+    margin-bottom: .5em;
     color: rgb(255, 107, 107);
+    animation: danger 200ms ease-in-out forwards;
+}
+
+@keyframes danger{
+    from {
+        opacity: 0;
+        transform: translateY(-1em);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
 }
