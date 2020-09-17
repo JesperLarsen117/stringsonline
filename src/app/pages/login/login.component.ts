@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { CookieService } from 'src/app/services/cookie.service';
 import { first } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit {
   token: Object;
   couldLogin: boolean = true;
-  constructor(private fb: FormBuilder, public auth: AuthService, private cookie: CookieService) { }
+  constructor(private fb: FormBuilder, public auth: AuthService, private cookie: CookieService, private router: Router) { }
 
   login = this.fb.group({
     username: ['', Validators.required],
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    if (this.auth.isOnline) this.router.navigateByUrl('/forside')
   }
   async onSubmit() {
     const body = {

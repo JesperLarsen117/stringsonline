@@ -13,9 +13,11 @@ export class CartCardComponent implements OnInit {
   @Input('price') price;
   @Input('stock') stock;
   @Input('id') id;
+  @Input('pid') pid;
   constructor(public cart: CartService) { }
 
   ngOnInit(): void {
+
   }
 
 }

@@ -22,5 +22,32 @@
             <h2>{{product.name}}</h2>
             <p>{{product.description_long}}</p>
         </article>
+        <section class="product-details-right" *ngIf="product">
+            <figure>
+                <img src="{{product.brand_image}}" alt="{{product.brand}} image">
+            </figure>
+            <h3>Pris: DKK {{product.price}}</h3>
+            <div>
+                <form [formGroup]="cartFrom" (ngSubmit)="onSubmit(product.id, product.stock)">
+                    <input type="number" #thisValue value="1" min="1" [max]="product.stock" (change)="value()"
+                        formControlName="quantity">
+                    <button>Læg i kurv</button>
+                </form>
+                <p>{{product.stock}}+ på lager</p>
+            </div>
+            <section class="rating-container">
+                <article (click)="openRating()" class="star-ratings-css" *ngIf="averageRating > 0">
+                    <div class="star-ratings-sprite"><span style="width: {{averageRating}}%"
+                            class="star-ratings-sprite-rating"></span>
+                    </div>
+                </article>
+                <app-rating *ngIf="averageRating > 0" class="rating-box" [pid]="product.id"></app-rating>
+                <app-rating *ngIf="averageRating <= 0" class="no-rating-box" [pid]="product.id"></app-rating>
+
+            </section>
+
+            <p *ngIf="averageRating <= 0">Dette produkt har ingen anmeldelser.</p>
+        </section>
     </section>
+
 </main>

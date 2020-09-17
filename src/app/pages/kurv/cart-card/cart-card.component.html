@@ -6,9 +6,9 @@
         <h2>{{title}}</h2>
         <div class="quantity-buttons">
             <div>
-                <button class="subtract-button">-</button>
+                <button class="subtract-button" (click)="cart.subtractQuantity(quantity, pid, id, $event)">-</button>
                 <div class="amount">{{quantity}}</div>
-                <button class="add-button">+</button>
+                <button class="add-button" (click)="cart.addQuantity(quantity, pid)">+</button>
             </div>
             <p class="stock-cart">{{stock}}0 på lager</p>
         </div>

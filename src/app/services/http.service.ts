@@ -16,6 +16,7 @@ interface User {
 export class HttpService {
   products: Observable<any>;
   userSubject = new Subject();
+  ratingSubject = new Subject();
 
   constructor(private http: HttpClient, private cookie: CookieService, private auth: AuthService) { }
   // Caching products.
@@ -103,5 +104,28 @@ export class HttpService {
   // ///////////////////////
   getBrands() {
     return this.http.get('https://api.mediehuset.net/stringsonline/brands');
+  }
+  // ///////////////////////
+  // rating
+  // ///////////////////////
+  getAverageRating(id) {
+    this.ratingSubject.next('rating changed');
+    return this.http.get(`https://api.mediehuset.net/stringsonline/ratings/average/${id}`);
+  }
+  postRating(body) {
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `Bearer ${this.cookie.get("token")}`
+    );
+    this.ratingSubject.next('rating changed');
+    return this.http.post('https://api.mediehuset.net/stringsonline/ratings', body, { headers })
+  }
+  deleteRating(id) {
+    const headers = new HttpHeaders().set(
+      "Authorization",
+      `Bearer ${this.cookie.get("token")}`
+    );
+    this.ratingSubject.next('rating changed');
+    return this.http.delete(`https://api.mediehuset.net/stringsonline/ratings/${id}`, { headers })
   }
 }

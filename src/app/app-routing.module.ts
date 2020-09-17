@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { ConfirmationComponent } from './pages/confirmation/confirmation.component';
 import { ErrorComponent } from './pages/error/error.component';
@@ -18,10 +19,10 @@ const routes: Routes = [
   { path: 'forside', component: FrontpageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'Salgs-og-handelbetingelser', component: TermsoftradeComponent },
-  { path: 'Indkøbskurv', component: KurvComponent },
-  { path: 'kasse', component: CheckoutComponent },
-  { path: 'ordrehistorik', component: OrderHistoryComponent },
-  { path: 'ordrebekræftelse/:id', component: ConfirmationComponent },
+  { path: 'Indkøbskurv', canActivate: [AuthGuard], component: KurvComponent },
+  { path: 'kasse', canActivate: [AuthGuard], component: CheckoutComponent },
+  { path: 'ordrehistorik', canActivate: [AuthGuard], component: OrderHistoryComponent },
+  { path: 'ordrebekræftelse/:id', canActivate: [AuthGuard], component: ConfirmationComponent },
   { path: 'produkter/:type/:typeTwo/:id', component: ProdukterComponent },
   { path: 'produkt/:type/:id', component: ProductComponent },
   { path: 'produkt/:type/:typeTwo/:typeId/:id', component: ProductComponent },

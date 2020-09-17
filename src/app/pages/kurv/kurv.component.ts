@@ -36,9 +36,12 @@ export class KurvComponent implements OnInit {
           price: this.products.price,
           stock: this.products.stock,
           id: itemInCart.id,
+          pid: this.products.id,
           quantity: itemInCart.quantity,
         });
       }
+      console.log(this.product);
+
       this.totalPrice = totalMoneyAmount
     }
     this.cart.cartSubject.subscribe(async status => {
@@ -46,18 +49,22 @@ export class KurvComponent implements OnInit {
       this.itemsInCart = this.itemsInCart.cartlines;
       let totalMoneyAmount: number | string = 0
       if (this.itemsInCart) {
-        for (const itemInCart of this.itemsInCart) {
+        for (const [index, itemInCart] of this.itemsInCart.entries()) {
           this.products = await this.http.getProductDetails(itemInCart.product_id).toPromise();
           this.products = this.products.item
           const withQuantity = +this.products.price * +itemInCart.quantity
           totalMoneyAmount = totalMoneyAmount + withQuantity;
+          if (this.product[index]) {
+            if (itemInCart.quantity !== this.product[index].quantity) {
+              this.product[index].quantity = itemInCart.quantity
+            }
+          }
         }
         this.totalPrice = totalMoneyAmount
       } else {
         this.totalPrice = 0;
-
       }
-    })
+    });
   }
   clearCart() {
     this.totalPrice = 0;

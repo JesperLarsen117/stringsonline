@@ -8,7 +8,7 @@
         <section class="cart-items">
             <h2 *ngIf="!itemsInCart">Der er ikke nogen vare i din kurv.</h2>
             <cart-card class="cartCard" *ngFor="let item of product" [image]="item.image" [title]="item.name"
-                [quantity]="item.quantity" [price]="item.price" [stock]="item.stock" [id]="item.id">
+                [quantity]="item.quantity" [price]="item.price" [stock]="item.stock" [id]="item.id" [pid]="item.pid">
             </cart-card>
         </section>
         <section class="action-cart">
