@@ -33,7 +33,9 @@ body {
     background-color: #131313;
     overflow-x: hidden;
 }
-
+html {
+    overflow-x: hidden;    
+}
 h1, 
 h2, 
 h3, 
@@ -65,6 +67,9 @@ label {
 .page-header, .page-main {
     width: 80%;
     margin: 0 auto 1em auto;
+    @media (max-width: 1200px) {
+        width: 90%;
+    }
 }
 .page-main {
     display: grid;

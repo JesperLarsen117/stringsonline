@@ -25,7 +25,7 @@
                 <option value='null'>Vis alle</option>
                 <option *ngFor="let item of brands" value="{{item.title}}">{{item.title}}</option>
             </select>
-            <select name="brands" id="brands" (change)="filterValues($event)">
+            <select name="brands" id="filter" (change)="filterValues($event)">
                 <option default hidden value="0">Sorter efter ...</option>
                 <option value="1">Pris høj til lav</option>
                 <option value="2">Pris lav til høj</option>

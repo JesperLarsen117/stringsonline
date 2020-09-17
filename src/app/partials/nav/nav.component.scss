@@ -178,9 +178,7 @@ nav {
     }
 }
 .mobile {
-    // border: 2px solid white;
     display: none;
-    // background:red;
     position: fixed;
     height: 45px;
     width: 70%;
@@ -189,6 +187,7 @@ nav {
     text-align: center;
     z-index: 1;
     transform: translateY(-120px);
+    
     @media (max-width: 1200px) {
         width: 82%;
     }
@@ -202,9 +201,10 @@ nav {
         background-color: #131313;
         padding: .5em;
         border: 2px solid white;
+
     }
     ul {
-        padding: 5em 5em 5em 5em;
+        padding: 5em;
         display: block;
         top: -10px;
         position: absolute;
@@ -220,6 +220,7 @@ nav {
             right: 1em;
             cursor: pointer;
             user-select: none;
+
         }
         li {
             list-style: none;
@@ -235,7 +236,6 @@ nav {
         transform: translate(-60%, -25px) !important;
         user-select: none;
 
-        
     }
     @media (max-width: 1200px) {
         display: block;
