@@ -39,7 +39,7 @@ export class CartService {
     const headers = this.headers
     const body = {
       product_id: id,
-      quantity: amount
+      quantity: +amount
     };
     let cart = <any>await this.http.getCart({ headers }).toPromise()
     cart = cart.cartlines;
@@ -54,7 +54,7 @@ export class CartService {
             const body = {
               product_id: id,
               field: 'quantity',
-              value: +iterator.quantity + amount
+              value: +iterator.quantity + +amount
             };
             await this.http.patchCart(body, { headers }).toPromise()
             this.cartSubject.next('cart changed');

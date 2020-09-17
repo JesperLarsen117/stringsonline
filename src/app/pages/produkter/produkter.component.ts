@@ -84,10 +84,10 @@ export class ProdukterComponent implements OnInit {
   }
 
   sortPrice(method) {
-    if (method === 1) {
+    if (method === 2) {
       this.product.sort((a, b) => (+a.price < +b.price) ? -1 : (+a.price > +b.price) ? 1 : 0);
     }
-    if (method === 2) {
+    if (method === 1) {
       this.product.sort((a, b) => (+b.price < +a.price) ? -1 : (+b.price > +a.price) ? 1 : 0);
     }
   }

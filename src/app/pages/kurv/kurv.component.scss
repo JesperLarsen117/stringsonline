@@ -1,6 +1,7 @@
 .cart-items {
     max-height: 557px;
     overflow-y: scroll;
+    overflow-x: hidden;
     border: 1px solid #393939;
 }
 
@@ -10,6 +11,9 @@
     margin-left: auto;
     margin-right: 8px;
     margin-bottom: 4em;
+    @media (max-width: 1700px) {
+        width: 100%;
+    }
     .action-cart-container {
         padding: 1em;
         display: grid;
@@ -17,16 +21,34 @@
         gap: 1em;
         align-content: center;
         align-items: center;
+        @media (max-width: 1500px) {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        @media (max-width: 900px) {
+            display: block;
+        }
         .amount-cart {
             grid-column: 2;
             text-align: right;
+            @media (max-width: 1500px) {
+                grid-column: 1;
+            }
         }
         div {
             grid-column: 3;
+            @media (max-width: 1500px) {
+                grid-column: 2;
 
+            }
             text-align: right;
         }
         button {
+            @media (max-width: 1500px) {
+                grid-column: 3;
+            }
+            @media (max-width: 900px) {
+                width: 100%;
+            }
             grid-column: 4;
             background-color: #D10061;
             color: white;

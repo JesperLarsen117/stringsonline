@@ -1,0 +1,61 @@
+.fontpage-card-container {
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    gap: 1em;
+    border: 1px solid #232323;
+    @media (max-width: 1100px) {
+        grid-template-columns: 1fr;
+    }
+    figure {
+        margin-bottom: 1em;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        @media (max-width: 1100px) {
+            height: 200px;
+        }
+        img {
+            object-fit: cover;
+            position: absolute;
+            top: 50%; 
+            left: 50%;
+            width: 80%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    section {
+        padding: 1em;
+        h2 {
+            margin: 1em 0;
+        }
+        .teaser-front {
+            height: 150px;
+            a {
+                color: var(--highlight);
+                text-decoration: none;
+            }
+        }
+        .priceAndBuy {
+            margin-top: 1em;
+            display: grid;
+            grid-template-columns: 1fr 40%;
+            p, button {
+                padding: .5em;
+            }
+            button {
+                background-color: #D10061;
+                border: none;
+                border-radius: 0 4px 4px 0;
+            }
+            p {
+                border-top: 1px solid #232323;
+                border-left: 1px solid #232323;
+                border-bottom: 1px solid #232323;
+                border-radius: 4px 0 0 4px;
+                text-align: center;
+                
+            }
+        }
+    }
+}

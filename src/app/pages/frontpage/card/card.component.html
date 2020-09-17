@@ -1,3 +1,13 @@
-<article>
-
+<article class="fontpage-card-container">
+    <figure>
+        <img src="{{image}}" alt="{{title}} image">
+    </figure>
+    <section>
+        <h2>{{title}}</h2>
+        <p class="teaser-front">{{teaser}} <a href="/produkt/søg/{{id}}">Læs mere</a></p>
+        <div class="priceAndBuy">
+            <p class="front-price">Pris: DKK {{price}}</p>
+            <button (click)="cart.addToCart(id, 1)">Læg i kurv</button>
+        </div>
+    </section>
 </article>

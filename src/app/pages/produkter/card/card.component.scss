@@ -5,6 +5,12 @@
     gap: 1em;
     border: 1px solid #393939;
     animation: startAnimation 500ms ease-in-out forwards;
+    @media (max-width: 1500px) {
+        grid-template-columns: 30% 1fr 30%;
+    }
+    @media (max-width: 1000px) {
+        display: block;
+    }
     figure {
         position: relative;
         width: 100%;

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'card-frontpage',
@@ -11,7 +12,7 @@ export class CardComponent implements OnInit {
   @Input('teaser') teaser;
   @Input('price') price;
   @Input('id') id;
-  constructor() { }
+  constructor(public cart: CartService) { }
 
   ngOnInit(): void {
   }

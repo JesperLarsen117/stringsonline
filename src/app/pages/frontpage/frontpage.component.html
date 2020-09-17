@@ -18,7 +18,13 @@
         </figure>
         <section class="favorites-frontpage">
             <h2>Kundernes favoritter</h2>
-            <card-frontpage></card-frontpage>
+            <section class="favorites-frontpage-card-container">
+
+                <card-frontpage *ngFor="let item of product" [image]="item.image_fullpath" [title]="item.name"
+                    [teaser]="item.description_short" [price]="item.price" [id]="item.id">
+                </card-frontpage>
+            </section>
+
         </section>
     </section>
 </main>

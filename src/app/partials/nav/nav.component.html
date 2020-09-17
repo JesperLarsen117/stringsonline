@@ -11,8 +11,23 @@
     </section>
     <figure>
         <img src="../../../assets/images/logo.svg" alt="logo">
-        <figcaption>
+        <figcaption class="desktop">
             <ul>
+                <li><a routerLink="">Forside</a></li>
+                <li><a routerLink="/Salgs-og-handelbetingelser">Salgs- og handelbetingelser</a></li>
+                <li *ngIf="!auth.isOnline"><a class="login-button" routerLink="/login">Login</a></li>
+                <li *ngIf="auth.isOnline"><a routerLink="/ordrehistorik">Ordrehistorik</a></li>
+                <li *ngIf="auth.isOnline"><a class="login-button" (click)="auth.logout()">Logud</a></li>
+            </ul>
+        </figcaption>
+        <figcaption class="mobile">
+            <span id="mobile-btn" (click)="openMenu($event)" class="material-icons">
+                menu
+            </span>
+            <ul>
+                <span id="close" (click)="closeMenu($event)" class="material-icons">
+                    clear
+                </span>
                 <li><a routerLink="">Forside</a></li>
                 <li><a routerLink="/Salgs-og-handelbetingelser">Salgs- og handelbetingelser</a></li>
                 <li *ngIf="!auth.isOnline"><a class="login-button" routerLink="/login">Login</a></li>

@@ -1,39 +1,64 @@
 .fontpage-mainContent {
-        figure {
-            display: grid;
-            grid-template-columns: 1fr 30%;
-            img {
-                width: 100%;
+    figure {
+        display: grid;
+        grid-template-columns: 1fr 30%;
+        @media (max-width: 1850px) {
+            grid-template-columns: 1fr 40%;
+        }
+        @media (max-width: 1650px) {
+            grid-template-columns: 1fr 1fr;
+        }
+        @media (max-width: 1300px) {
+           display: block;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        figcaption {
+            background-color: #2C3737;
+            padding: 1em;
+            h2 {
+                font-weight: 300;
+                font-size: 3em;
+                span {
+                    font-weight: bold;
+                }
             }
-            figcaption {
-                background-color: #2C3737;
-                padding: 1em;
-                h2 {
-                    font-weight: 300;
-                    font-size: 3em;
-                    span {
-                        font-weight: bold;
-                    }
-                }
-                p {
-                    font-size: 1.2em;
-                    font-weight: 100;
-                }
-                div {
-                    margin: 1em 0;
-                    border-top: 1px solid rgba(255, 255, 255, 0.29);
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.29);
-                    font-size: 2.4em;
-                    line-height: 1.4em;
-                }
-                a {
-                    text-decoration: none;
-                    color: var(--border-color);
-                    background-color: var(--highlight);
-                    padding: .5em 2em;
-                    border-radius: 50px;
-                }
+            p {
+                font-size: 1.2em;
+                font-weight: 100;
+            }
+            div {
+                margin: 1em 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.29);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.29);
+                font-size: 2.4em;
+                line-height: 1.4em;
+            }
+            a {
+                text-decoration: none;
+                color: var(--border-color);
+                background-color: var(--highlight);
+                padding: .5em 2em;
+                border-radius: 50px;
             }
         }
+    }
+}
+.favorites-frontpage {
+    margin-bottom: 2em;
+    h2 {
+        margin: 1em 0 .5em 0;
+    }
+    .favorites-frontpage-card-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1em 2em;
+        @media (max-width: 1750px) {
+            display: block;
+         }
+    }    
 }
 

@@ -57,4 +57,12 @@ export class NavComponent implements OnInit {
   onSubmit() {
     this.router.navigateByUrl(`/søg/${this.search.get('search').value}`)
   }
+  openMenu(e) {
+    e.currentTarget.parentNode.childNodes[1].classList = 'open'
+    console.dir(e.currentTarget.parentNode.childNodes[1]);
+  }
+  closeMenu(e) {
+    e.currentTarget.parentNode.parentNode.childNodes[1].classList = ''
+    console.dir(e.currentTarget.parentNode.childNodes[1]);
+  }
 }
