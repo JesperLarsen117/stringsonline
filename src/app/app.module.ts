@@ -26,6 +26,7 @@ import { ConfirmationComponent } from './pages/confirmation/confirmation.compone
 import { SearchComponent } from './pages/search/search.component';
 import { OrderHistoryComponent } from './pages/order-history/order-history.component';
 import { RatingComponent } from './partials/rating/rating.component';
+import { CookieBannerComponent } from './partials/cookie-banner/cookie-banner.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { RatingComponent } from './partials/rating/rating.component';
     ConfirmationComponent,
     SearchComponent,
     OrderHistoryComponent,
-    RatingComponent
+    RatingComponent,
+    CookieBannerComponent
   ],
   imports: [
     BrowserModule,

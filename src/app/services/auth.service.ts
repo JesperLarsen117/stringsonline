@@ -20,9 +20,10 @@ export class AuthService {
 
   public get isOnline(): boolean {
     return this.userSubject.value ? true : false;
-
   }
-
+  public get cookieAccept(): boolean {
+    return this.cookie.get('cookieAccept') ? true : false;
+  }
   login(body) {
     return this.http.post<User>('https://api.mediehuset.net/token', body)
       .pipe(map((user: any) => {
