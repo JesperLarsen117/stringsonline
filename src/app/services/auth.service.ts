@@ -16,14 +16,15 @@ export class AuthService {
   userSubject = new BehaviorSubject<any>(this.cookie.get('token'));
 
   constructor(private http: HttpClient, private cookie: CookieService, private router: Router) { }
-  // login, return token.
-
+  // Checks if you are online.
   public get isOnline(): boolean {
     return this.userSubject.value ? true : false;
   }
+  // checks if cookie has been accepted.
   public get cookieAccept(): boolean {
     return this.cookie.get('cookieAccept') ? true : false;
   }
+  // login services
   login(body) {
     return this.http.post<User>('https://api.mediehuset.net/token', body)
       .pipe(map((user: any) => {
@@ -33,6 +34,7 @@ export class AuthService {
         return user
       }));
   }
+  // logout out the user
   logout() {
     this.cookie.delete('token')
     this.userSubject.next(null);

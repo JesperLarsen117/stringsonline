@@ -27,11 +27,9 @@ export class ProductComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.product = await this.http.getProductDetails(this.productId).toPromise();
     this.product = this.product.item;
-    console.log(this.product);
     this.averageRating = await this.http.getAverageRating(this.product.id).toPromise();
     this.averageRating = (parseFloat(this.averageRating.average_num_stars)) ? parseFloat(this.averageRating.average_num_stars) * 20 : 0;
 
-    console.log(this.averageRating);
     this.router.events.subscribe(async res => {
       if (res instanceof NavigationEnd) {
         this.productId = this.route.snapshot.params.id;
@@ -59,9 +57,9 @@ export class ProductComponent implements OnInit {
   value() {
     this.amount = this.cartFrom.get('quantity').value;
   }
+  // open the rating tab.
   openRating() {
     const element = this.elem.nativeElement.querySelector('.rating-box');
-    console.dir(element.classList);
     element.classList.toggle('open')
   }
 }

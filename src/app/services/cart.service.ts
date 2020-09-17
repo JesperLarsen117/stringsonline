@@ -43,10 +43,12 @@ export class CartService {
     };
     let cart = <any>await this.http.getCart({ headers }).toPromise()
     cart = cart.cartlines;
+    // check if there is anything in cart. if there isn't, run the code.
     if (!cart) {
       await this.http.postCart(body, { headers }).toPromise()
       this.cartSubject.next('cart changed');
     } else {
+      // sort through cart, to match id from database, with product_id. If true patch the value. (plus value with amount)
       const check = cart.some(e => e.product_id === id);
       if (check) {
         for (const iterator of cart) {
@@ -56,16 +58,19 @@ export class CartService {
               field: 'quantity',
               value: +iterator.quantity + +amount
             };
+            // execute patch.
             await this.http.patchCart(body, { headers }).toPromise()
             this.cartSubject.next('cart changed');
           }
         }
+        // if the product does not exist in the database, post a new product to cart.
       } else {
         await this.http.postCart(body, { headers }).toPromise()
         this.cartSubject.next('cart changed');
       }
     }
   }
+  // adds one to the products quantity.
   addQuantity(quantity, id) {
     const headers = this.headers;
     const body = {
@@ -74,10 +79,10 @@ export class CartService {
       value: +quantity + 1
     }
     this.http.patchCart(body, { headers }).subscribe(res => {
-
       this.cartSubject.next('cart changed');
     });
   }
+  // subtact one from the products quantity.
   subtractQuantity(quantity, id, cartId, e) {
     this.quantity = +quantity - 1;
     const body = {
@@ -87,6 +92,7 @@ export class CartService {
     }
     const headers = this.headers;
     if (this.quantity <= 0) {
+      // delete animation.
       e.currentTarget.parentNode.parentNode.parentNode.parentNode.classList.add('deleted');
       this.deleteItem(cartId, null);
     } else {
@@ -96,6 +102,7 @@ export class CartService {
       });
     }
   }
+  // clear the cart, delete every product in cart, from the database.
   async clearCart() {
     await this.http.deleteCart().toPromise();
     this.cartSubject.next('cart changed');
