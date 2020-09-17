@@ -8,7 +8,13 @@ import { HttpService } from 'src/app/services/http.service';
   styleUrls: ['./side-menu.component.scss']
 })
 export class SideMenuComponent implements OnInit {
+  brands: any;
   constructor(public http: HttpService) { }
-  ngOnInit() {
+  async ngOnInit() {
+    if (!this.brands) {
+      this.brands = await this.http.getBrands().toPromise();
+      this.brands = this.brands.items;
+
+    }
   }
 }

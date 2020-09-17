@@ -12,6 +12,7 @@ export class CheckoutComponent implements OnInit {
   @ViewChild('bankPayment') bankPayment;
   @ViewChild('cardPayment') cardPayment;
   @ViewChild('otherShippingAddress') otherShippingAddress;
+  alternativeShipping: boolean = false;
   constructor(private fb: FormBuilder, private http: HttpService, private router: Router) { }
   order = this.fb.group({
     firstname: ['', Validators.required],
@@ -20,16 +21,16 @@ export class CheckoutComponent implements OnInit {
     zipcode: ['', Validators.required],
     city: ['', Validators.required],
 
-    otherfirstname: ['', Validators.required],
-    otherlastname: ['', Validators.required],
-    otherstreet: ['', Validators.required],
-    otherzipcode: ['', Validators.required],
-    othercity: ['', Validators.required],
+    otherfirstname: [''],
+    otherlastname: [''],
+    otherstreet: [''],
+    otherzipcode: [''],
+    othercity: [''],
 
     otherOrderAddress: [''],
     email: ['', Validators.required],
     phone: ['', Validators.required],
-    paymentOption: ['', Validators.required],
+    paymentOption: [''],
     otherShippingaddress: [false],
 
     payment: [''],
@@ -74,17 +75,17 @@ export class CheckoutComponent implements OnInit {
       delivery_zipcode: this.order.get('otherzipcode').value ? this.order.get('otherzipcode').value : "",
       delivery_city: this.order.get('othercity').value ? this.order.get('othercity').value : "",
     };
-    console.log(body);
+
 
     this.http.postOrder(body).subscribe((res: any) => {
       console.log(res);
       if (res.status) {
         this.router.navigateByUrl(`/ordrebekræftelse/${res.order_id}`)
       }
-    })
+    });
   }
   otherAddress(e) {
-    console.dir(e.currentTarget.childNodes[0].checked);
+    this.alternativeShipping = e.currentTarget.childNodes[0].checked;
 
     console.log(this.order.get('otherShippingaddress').value);
     if (e.currentTarget.childNodes[0].checked) {
@@ -92,6 +93,6 @@ export class CheckoutComponent implements OnInit {
     } else {
       this.otherShippingAddress.nativeElement.style.display = "none";
     }
-
   }
+  get f() { return this.order.controls; }
 }

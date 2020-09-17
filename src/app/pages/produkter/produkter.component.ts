@@ -11,10 +11,12 @@ export class ProdukterComponent implements OnInit {
   brands: any;
   product: any;
   productSaved: any
+  brandsRouter = this.route.snapshot.params.brands;
   productId = this.route.snapshot.params.id;
   type = this.route.snapshot.params.type
   typeTwo = this.route.snapshot.params.typeTwo
   productTypeId: any;
+  brandSaved: any;
   constructor(private http: HttpService, private route: ActivatedRoute, private router: Router) { }
 
   async ngOnInit(): Promise<void> {
@@ -24,6 +26,14 @@ export class ProdukterComponent implements OnInit {
     this.productTypeId = this.product.group.id;
     this.product = this.product.group.products;
     this.productSaved = this.product
+    if (this.brandsRouter) {
+      this.product = await this.http.getProductByBrandId(this.productId).toPromise();
+      this.product = (this.product.items) ? this.product.items : [this.product.item];
+      this.brandSaved = this.product[0];
+      this.product = this.product[0].products
+      this.productSaved = this.product
+      console.log(this.productSaved);
+    }
 
     this.router.events.subscribe(async res => {
       if (res instanceof NavigationEnd) {
@@ -33,6 +43,16 @@ export class ProdukterComponent implements OnInit {
         this.productId = this.route.snapshot.params.id;
         this.product = await this.http.getProduct(this.productId).toPromise();
         this.product = this.product.group.products;
+        if (this.brandsRouter) {
+          console.log(this.productId);
+          this.product = await this.http.getProductByBrandId(this.productId).toPromise();
+          console.log(this.product);
+          this.product = (this.product.items) ? this.product.items : [this.product.item];
+          this.brandSaved = this.product[0];
+          console.log(this.brandSaved);
+          this.product = this.product[0].products
+          this.productSaved = this.product
+        }
       }
     });
   }

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class ProductCardComponent implements OnInit {
   @Input('stock') stock;
   @Input('id') id;
   @Input('url') url;
-  constructor(public cart: CartService) { }
+  constructor(public cart: CartService, public auth: AuthService) { }
 
   ngOnInit(): void {
   }

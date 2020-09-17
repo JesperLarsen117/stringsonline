@@ -1,10 +1,13 @@
 <header class="page-header">
     <app-nav></app-nav>
-    <breadcrumb *ngIf="product && this.type !== 'søg'"
+    <breadcrumb *ngIf="product && type !== 'søg' && type !== 'brands'"
         [breadcrumbs]="[{place: type, url: '/' },  {place: typeTwo, url: '/produkter/'+ type + '/' + typeTwo + '/' + productTypeId}, {place: product.name, url: '/produkt/'+ type + '/' + typeTwo + '/' + productTypeId + '/' + productId}]">
     </breadcrumb>
-    <breadcrumb *ngIf="product && this.type === 'søg'"
+    <breadcrumb *ngIf="product && type === 'søg' && type !== 'brands'"
         [breadcrumbs]="[{place: type, url: '/søg' }, {place: product.name, url: '/produkt/'+ type + '/' + typeTwo + '/' + productTypeId + '/' + productId}]">
+    </breadcrumb>
+    <breadcrumb *ngIf="product && type === 'brands'"
+        [breadcrumbs]="[{place: type, url: '/søg' }, {place: product.name, url: '/'}]">
     </breadcrumb>
 </header>
 <main class="page-main">
@@ -31,7 +34,7 @@
                 <form [formGroup]="cartFrom" (ngSubmit)="onSubmit(product.id, product.stock)">
                     <input type="number" #thisValue value="1" min="1" [max]="product.stock" (change)="value()"
                         formControlName="quantity">
-                    <button>Læg i kurv</button>
+                    <button [disabled]="!auth.isOnline">Læg i kurv</button>
                 </form>
                 <p>{{product.stock}}+ på lager</p>
             </div>

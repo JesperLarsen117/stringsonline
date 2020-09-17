@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
 import { HttpService } from 'src/app/services/http.service';
 
@@ -22,7 +23,7 @@ export class ProductComponent implements OnInit {
   })
   amount: any;
   averageRating: any;
-  constructor(private elem: ElementRef, private http: HttpService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder, private cart: CartService) { }
+  constructor(public auth: AuthService, private elem: ElementRef, private http: HttpService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder, private cart: CartService) { }
 
   async ngOnInit(): Promise<void> {
     this.product = await this.http.getProductDetails(this.productId).toPromise();

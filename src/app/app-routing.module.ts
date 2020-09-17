@@ -23,6 +23,7 @@ const routes: Routes = [
   { path: 'kasse', canActivate: [AuthGuard], component: CheckoutComponent },
   { path: 'ordrehistorik', canActivate: [AuthGuard], component: OrderHistoryComponent },
   { path: 'ordrebekræftelse/:id', canActivate: [AuthGuard], component: ConfirmationComponent },
+  { path: 'produkter/:brands/:id', component: ProdukterComponent },
   { path: 'produkter/:type/:typeTwo/:id', component: ProdukterComponent },
   { path: 'produkt/:type/:id', component: ProductComponent },
   { path: 'produkt/:type/:typeTwo/:typeId/:id', component: ProductComponent },

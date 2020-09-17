@@ -12,7 +12,7 @@
     </section>
     <section class="right-products-card">
         <p class="price-products">Pris: DKK {{price}}</p>
-        <button (click)="cart.addToCart(id, 1)">Læg i kurv</button>
+        <button [disabled]="!auth.isOnline" (click)="cart.addToCart(id, 1)">Læg i kurv</button>
         <p class="stock-products" *ngIf="(stock >= 1)">{{stock}}+ på lager</p>
         <p class="stock-products" *ngIf="(stock <= 0)">Varen er ikke på lager.</p>
     </section>

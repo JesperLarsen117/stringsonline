@@ -6,4 +6,10 @@
                 routerLink="/produkter/{{product.title}}/{{item.title}}/{{item.id}}/">{{item.title}}</a>
         </div>
     </details>
+    <details *ngIf="brands">
+        <summary>Brands</summary>
+        <div class="dropdown-links">
+            <a *ngFor="let item of brands" routerLink="/produkter/brands/{{item.id}}">{{item.title}}</a>
+        </div>
+    </details>
 </aside>

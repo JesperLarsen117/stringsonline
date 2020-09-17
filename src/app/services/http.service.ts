@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { map, shareReplay, catchError } from 'rxjs/operators';
 import { AuthService } from './auth.service';
@@ -118,12 +119,14 @@ export class HttpService {
   getBrands() {
     return this.http.get('https://api.mediehuset.net/stringsonline/brands');
   }
+  getProductByBrandId(id) {
+    return this.http.get(`https://api.mediehuset.net/stringsonline/brands/${id}`);
+  }
   // ///////////////////////
   // rating
   // ///////////////////////
   // get average rating. with id.
   getAverageRating(id) {
-    this.ratingSubject.next('rating changed');
     return this.http.get(`https://api.mediehuset.net/stringsonline/ratings/average/${id}`);
   }
   // post rating.

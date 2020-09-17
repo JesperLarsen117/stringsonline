@@ -1,12 +1,24 @@
 <header class="page-header">
     <app-nav></app-nav>
-    <breadcrumb
+    <breadcrumb *ngIf="!brandsRouter"
         [breadcrumbs]="[{place: type, url: '/' },  {place: typeTwo, url: '/produkter/'+ type + '/' + typeTwo + '/' + productTypeId}]">
+    </breadcrumb>
+    <breadcrumb *ngIf="brandsRouter && brandSaved"
+        [breadcrumbs]="[{place: 'brands', url: '/'}, {place: brandSaved.title, url: '/produkter/brands/' + brandSaved.id}]">
     </breadcrumb>
 </header>
 <main class="page-main">
     <app-side-menu></app-side-menu>
     <section>
+        <article class="brands-products" *ngIf="brandsRouter && brandSaved">
+            <figure>
+                <img src="{{brandSaved.image_fullpath}}" alt="{{brandSaved.title}} image">
+            </figure>
+            <div>
+                <h2>{{brandSaved.title}}</h2>
+                <p>{{brandSaved.description}}</p>
+            </div>
+        </article>
         <section class="filter">
             <select name="brands" id="brands" (change)="filterBrand($event)">
                 <option default hidden value="0">Producent</option>
@@ -25,7 +37,8 @@
         <section class="product-container" *ngIf="product">
             <product-card *ngFor="let item of product" [image]="item.image_fullpath" [title]="item.name"
                 [teaser]="item.description_short" [price]="item.price" [stock]="item.stock" [id]="item.id"
-                [url]="[type, typeTwo, productTypeId]"></product-card>
+                [url]="(!brandsRouter) ? [type, typeTwo, productTypeId] : ['brands', brandSaved.title, item.id]">
+            </product-card>
         </section>
     </section>
 </main>
