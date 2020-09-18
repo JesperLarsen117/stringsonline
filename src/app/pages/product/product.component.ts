@@ -44,7 +44,7 @@ export class ProductComponent implements OnInit {
         this.averageRating = await this.http.getAverageRating(this.product.id).toPromise();
         this.averageRating = (parseFloat(this.averageRating.average_num_stars)) ? parseFloat(this.averageRating.average_num_stars) * 20 : 0;
       }, 200);
-    })
+    });
   }
 
   async onSubmit(id, stock) {
